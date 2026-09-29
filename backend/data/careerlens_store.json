@@ -1381,6 +1381,122 @@
       "linkedin": "",
       "profile_pic": "",
       "_id": "69"
+    },
+    {
+      "id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "email": "test_3fc4b86b@example.com",
+      "name": "Test Candidate",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$LAma+BnobuhI27fi3G4T8g$hA6Ootsb5fHfvAoZyUAD13Ve8bIUIFcjlHipLc9W52M",
+      "created_at": "2026-09-29T20:36:50.527789+00:00",
+      "onboarding_done": true,
+      "privacy_mode": "A",
+      "target_role": "backend",
+      "education": "BS CS",
+      "skills": [
+        "python",
+        "sql"
+      ],
+      "preferences": {},
+      "bio": "Software developer passionate about algorithms.",
+      "github": "https://github.com/myuser",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "70",
+      "updated_at": "2026-09-29T20:36:50.790072+00:00"
+    },
+    {
+      "id": "2a1183d6-84a4-4dd5-b29f-dd416d1584f7",
+      "email": "csv_977122f9@example.com",
+      "name": "CSV Test User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$Y59T6UXv2cczsHhr5cxhnQ$Op+s4OO3vnRf9n4mzwTEYu5R53/L5YrxC1NwchrGzoU",
+      "created_at": "2026-09-29T20:36:51.868338+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "71"
+    },
+    {
+      "id": "c1bb353e-03c1-4e2d-93b3-dab8a63816d0",
+      "email": "csv_fail_41e09d93@example.com",
+      "name": "CSV Fail User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$EcEhnjmTDQjSmh7QqIKUdw$nd6hrZktmhMGzWeRjMVA9mM26YJBINqHX1hdKqiuTYI",
+      "created_at": "2026-09-29T20:36:51.991892+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "72"
+    },
+    {
+      "id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "email": "test_1f82102f@example.com",
+      "name": "Test Candidate",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$8JFoKUAsXT48DYK920VEPw$seSqMQRS1qKTs5Q8nagYQ/oeJAXWtlkzzQSvLARmnes",
+      "created_at": "2026-09-29T20:41:22.081332+00:00",
+      "onboarding_done": true,
+      "privacy_mode": "A",
+      "target_role": "backend",
+      "education": "BS CS",
+      "skills": [
+        "python",
+        "sql"
+      ],
+      "preferences": {},
+      "bio": "Software developer passionate about algorithms.",
+      "github": "https://github.com/myuser",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "73",
+      "updated_at": "2026-09-29T20:41:22.354044+00:00"
+    },
+    {
+      "id": "9db5914a-98ad-4e4d-aabb-c975675f5f1b",
+      "email": "csv_d610018f@example.com",
+      "name": "CSV Test User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$gvvyC4+OqQqQUUbv9FzeJg$d37p7W/u1U5X4V6J2qeUAb4/MCi/WRLxr7whHMGeBgg",
+      "created_at": "2026-09-29T20:41:23.525236+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "74"
+    },
+    {
+      "id": "7080ef1e-2607-4d76-ae12-ee425dbf2048",
+      "email": "csv_fail_30a6a66d@example.com",
+      "name": "CSV Fail User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$NlO4tIXpDtGpt3Hcx9crJA$Uusa0JinUGEW6wE+YDj0jJBYdr7jaKCSbqAkbgvoM7s",
+      "created_at": "2026-09-29T20:41:23.677786+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "75"
     }
   ],
   "resumes": [
@@ -2080,6 +2196,28 @@
       "text": null,
       "text_length": 866,
       "_id": "62"
+    },
+    {
+      "id": "852883b4-f02f-430c-90b8-52dad22ab407",
+      "user_id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-09-29T20:36:50.634837+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "63"
+    },
+    {
+      "id": "1f214fce-5da7-4527-ab24-34a728e23ba0",
+      "user_id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-09-29T20:41:22.192429+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "64"
     }
   ],
   "analyses": [
@@ -16958,6 +17096,494 @@
       "created_at": "2026-09-29T20:24:42.701103+00:00",
       "overall_score": 74,
       "_id": "62"
+    },
+    {
+      "id": "a03bb2bf-d580-452c-bed7-2bc7a03a68ec",
+      "user_id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "resume_id": "852883b4-f02f-430c-90b8-52dad22ab407",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-09-29T20:36:50.666388+00:00",
+      "overall_score": 74,
+      "_id": "63"
+    },
+    {
+      "id": "9e2420f3-67a1-49d6-8c0a-06edf62790ce",
+      "user_id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "resume_id": "1f214fce-5da7-4527-ab24-34a728e23ba0",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-09-29T20:41:22.233092+00:00",
+      "overall_score": 74,
+      "_id": "64"
     }
   ],
   "recommendations": [
@@ -20984,6 +21610,28 @@
       },
       "created_at": "2026-09-29T20:24:42.725433+00:00",
       "_id": "63"
+    },
+    {
+      "id": "95a8814d-d228-4d81-b85f-34f28e88a66f",
+      "user_id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "852883b4-f02f-430c-90b8-52dad22ab407",
+        "score": 74
+      },
+      "created_at": "2026-09-29T20:36:50.703576+00:00",
+      "_id": "64"
+    },
+    {
+      "id": "b9eb37b8-ad85-4217-a97f-7add809ed245",
+      "user_id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "1f214fce-5da7-4527-ab24-34a728e23ba0",
+        "score": 74
+      },
+      "created_at": "2026-09-29T20:41:22.266485+00:00",
+      "_id": "65"
     }
   ],
   "notifications": [
@@ -21611,6 +22259,26 @@
       "read": false,
       "created_at": "2026-09-29T20:24:42.748282+00:00",
       "_id": "61"
+    },
+    {
+      "id": "81582179-6419-4edf-b190-add69e856ae2",
+      "user_id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-09-29T20:36:50.734887+00:00",
+      "_id": "62"
+    },
+    {
+      "id": "6ab8468e-1b24-44a6-b966-d1fc6a84dd81",
+      "user_id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-09-29T20:41:22.294366+00:00",
+      "_id": "63"
     }
   ],
   "interviews": [
@@ -27712,6 +28380,230 @@
       "status": "in_progress",
       "_id": "128",
       "updated_at": "2026-09-29T20:24:44.362120+00:00"
+    },
+    {
+      "id": "c2af9b56-7fd5-4d95-9bda-db3cd24aafc7",
+      "user_id": "d431cde2-411b-4152-a19f-5de89508852c",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "python",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-09-29T20:36:50.763382+00:00",
+      "status": "in_progress",
+      "_id": "129"
+    },
+    {
+      "id": "d8ac5dc6-5956-4922-8888-032158417403",
+      "user_id": "electronics-5b702c67f4df440395c8cc6d95492769",
+      "role_id": "electronics_engineer",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "A sealed equipment cabinet overheats intermittently, and its existing fan is controlled manually. Build an Arduino Uno solution that monitors cabinet temperature, controls the fan automatically, reports operating state, and enters a safe state if the sensor becomes invalid. It must tolerate noisy readings and avoid rapid fan switching.",
+          "topic": "circuit design and fault handling",
+          "type": "circuit",
+          "challenge_id": "thermal_failsafe"
+        },
+        {
+          "q": "A small motorized gate must stop before contacting an approaching object and remain controllable by an operator. Build an Arduino Uno solution for the gate, including an emergency stop and clear status indication. The distance sensor may time out, and the motor supply can introduce electrical noise.",
+          "topic": "motor control and safety",
+          "type": "circuit",
+          "challenge_id": "motorized_gate"
+        },
+        {
+          "q": "A workshop wants a standalone station that detects a person entering a restricted zone, sounds an alarm, displays system state, and requires deliberate acknowledgement before returning to monitoring. Design the Arduino Uno circuit and firmware for noisy sensor input, startup, and sensor-fault conditions.",
+          "topic": "system integration and debugging",
+          "type": "circuit",
+          "challenge_id": "restricted_zone"
+        }
+      ],
+      "strict_practical": true,
+      "answers": [
+        ""
+      ],
+      "evaluations": [
+        {
+          "score": 0,
+          "correctness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "structure": 0,
+          "clarity": 0,
+          "circuit": 0,
+          "component_selection": 0,
+          "code": 0,
+          "logic": 0,
+          "behavior": 0,
+          "firmware_valid": false,
+          "wired_pin_match": true,
+          "unwired_code_pins": [],
+          "feedback": "Automated rubric: 0/11 circuit nets, 0/7 component groups, 0/6 firmware checks, and 0/4 source-level behavior checks passed. Firmware was not compiled or run on physical hardware.",
+          "improvements": [
+            "Component selection is incomplete: thermistor, resistor, dc motor, transistor, led, diode, battery.",
+            "11 required electrical net(s) are missing or incorrect.",
+            "Firmware evidence is missing for: arduino sketch structure.",
+            "Firmware evidence is missing for: temperature acquisition.",
+            "Firmware evidence is missing for: fan output control.",
+            "Firmware evidence is missing for: time-based sampling.",
+            "Firmware evidence is missing for: invalid sensor handling.",
+            "Firmware evidence is missing for: noise / rapid-switching control.",
+            "Scenario behavior not demonstrated: invalid sensor is detected.",
+            "Scenario behavior not demonstrated: fan reaches a safe state.",
+            "Scenario behavior not demonstrated: noisy input does not cause rapid switching.",
+            "Scenario behavior not demonstrated: temperature controls fan state.",
+            "Arduino sketch is empty."
+          ]
+        }
+      ],
+      "created_at": "2026-09-29T20:36:52.033282+00:00",
+      "status": "in_progress",
+      "_id": "130",
+      "updated_at": "2026-09-29T20:36:52.080928+00:00"
+    },
+    {
+      "id": "cd6f0bec-08d2-4dcf-bf0b-d993822bb49d",
+      "user_id": "faf56c14-c924-4e0d-8868-ee0a5239657c",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "python",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-09-29T20:41:22.323545+00:00",
+      "status": "in_progress",
+      "_id": "131"
+    },
+    {
+      "id": "94eab8a5-20c2-40f3-bd10-4cd82d02915b",
+      "user_id": "electronics-55b1fcec83bd428d9f41544805d4c630",
+      "role_id": "electronics_engineer",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "A sealed equipment cabinet overheats intermittently, and its existing fan is controlled manually. Build an Arduino Uno solution that monitors cabinet temperature, controls the fan automatically, reports operating state, and enters a safe state if the sensor becomes invalid. It must tolerate noisy readings and avoid rapid fan switching.",
+          "topic": "circuit design and fault handling",
+          "type": "circuit",
+          "challenge_id": "thermal_failsafe"
+        },
+        {
+          "q": "A small motorized gate must stop before contacting an approaching object and remain controllable by an operator. Build an Arduino Uno solution for the gate, including an emergency stop and clear status indication. The distance sensor may time out, and the motor supply can introduce electrical noise.",
+          "topic": "motor control and safety",
+          "type": "circuit",
+          "challenge_id": "motorized_gate"
+        },
+        {
+          "q": "A workshop wants a standalone station that detects a person entering a restricted zone, sounds an alarm, displays system state, and requires deliberate acknowledgement before returning to monitoring. Design the Arduino Uno circuit and firmware for noisy sensor input, startup, and sensor-fault conditions.",
+          "topic": "system integration and debugging",
+          "type": "circuit",
+          "challenge_id": "restricted_zone"
+        }
+      ],
+      "strict_practical": true,
+      "answers": [
+        ""
+      ],
+      "evaluations": [
+        {
+          "score": 0,
+          "correctness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "structure": 0,
+          "clarity": 0,
+          "circuit": 0,
+          "component_selection": 0,
+          "code": 0,
+          "logic": 0,
+          "behavior": 0,
+          "firmware_valid": false,
+          "wired_pin_match": true,
+          "unwired_code_pins": [],
+          "feedback": "Automated rubric: 0/11 circuit nets, 0/7 component groups, 0/6 firmware checks, and 0/4 source-level behavior checks passed. Firmware was not compiled or run on physical hardware.",
+          "improvements": [
+            "Component selection is incomplete: thermistor, resistor, dc motor, transistor, led, diode, battery.",
+            "11 required electrical net(s) are missing or incorrect.",
+            "Firmware evidence is missing for: arduino sketch structure.",
+            "Firmware evidence is missing for: temperature acquisition.",
+            "Firmware evidence is missing for: fan output control.",
+            "Firmware evidence is missing for: time-based sampling.",
+            "Firmware evidence is missing for: invalid sensor handling.",
+            "Firmware evidence is missing for: noise / rapid-switching control.",
+            "Scenario behavior not demonstrated: invalid sensor is detected.",
+            "Scenario behavior not demonstrated: fan reaches a safe state.",
+            "Scenario behavior not demonstrated: noisy input does not cause rapid switching.",
+            "Scenario behavior not demonstrated: temperature controls fan state.",
+            "Arduino sketch is empty."
+          ]
+        }
+      ],
+      "created_at": "2026-09-29T20:41:23.725953+00:00",
+      "status": "in_progress",
+      "_id": "132",
+      "updated_at": "2026-09-29T20:41:23.771722+00:00"
     }
   ],
   "password_reset_codes": []
