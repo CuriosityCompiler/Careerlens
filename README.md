@@ -47,24 +47,18 @@ Rather than providing black-box scores or hallucinated advice, CareerLens offers
 
 ## 🛠️ Architecture & Tech Stack
 
-```mermaid
+
 graph TD
-    Client["React 18 + Vite (Tailwind CSS, Indigo Branding)"]
-    WW["Browser Web Worker (Mode A Local Parser)"]
-    API["FastAPI Backend (JWT + Argon2 Auth)"]
-    DocStore["MongoDB / Resilient Embedded Document Store"]
-    Gemini["Google Gemini Flash (Mode B Server AI)"]
+- Client["React 18 + Vite (Tailwind CSS, Indigo Branding)"]
+- WW["Browser Web Worker - Mode A Local Parser"]
+- API["FastAPI Backend - JWT + Argon2 Auth"]
+- DocStore["MongoDB / Resilient Embedded Document Store"]
+- Gemini["Google Gemini Flash - Mode B Server AI"]
 
-    Client -->|On-device analysis| WW
-    Client -->|Authenticated REST API| API
-    API -->|Persist state & sessions| DocStore
-    API -->|Opt-in critique (Rate Limited)| Gemini
-```
-
-- **Frontend**: React 18, Vite, Tailwind CSS, Lucide React, Zustand, Axios, Recharts, Sonner.
-- **Backend**: Python 3, FastAPI, Uvicorn, Pydantic, Passlib with Argon2 (`argon2-cffi`), Motor / Local Async Store, Google GenAI SDK.
-
----
+- Client -->|On-device analysis| WW
+- Client -->|Authenticated REST API| API
+- API -->|Persist state and sessions| DocStore
+- API -->|Opt-in critique - Rate Limited| Gemini
 
 ## ⚡ Quick Start
 
@@ -116,11 +110,3 @@ python -m pytest tests/test_api.py -v
 
 ---
 
-## 🏆 Demo Flow for Hackathon Judges
-
-1. **Sign In**: Navigate to `http://localhost:5173/login` and enter an account's credentials, or create a new account.
-2. **Switch Personas**: In the top header bar, click **Vic**, **Travis**, or **Cooper**.
-3. **Resume Analysis**: Visit the **Resume** tab. Observe the instant Web Worker pre-check, the 6-dimensional score grid, the WWHN cards, and the interactive Skill Gap Matrix.
-4. **Mock Interview**: Go to the **Mock Interview** tab, pick a role & difficulty, and answer questions. Review per-question rubric metrics and STAR structure feedback.
-5. **Analytics & Reports**: Go to **Analytics** to view progression charts, the competency radar, and click **Download Progress CSV**.
-6. **Privacy Center**: Open **Privacy Center** to toggle between **Mode A (Local)** and **Mode B (Server AI)**, export or merge a full JSON account archive, or test one-click data deletion.
