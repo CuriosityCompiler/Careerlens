@@ -1,0 +1,16 @@
+{
+  "name": "careerlens-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CareerLens: AI-Powered Resume, Interview & Skill Intelligence Platform",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "preview": "npm --prefix frontend run preview",
+    "start": "npm --prefix frontend run dev",
+    "backend": "cmd /c \"cd backend && python -m uvicorn server:app --reload --host 0.0.0.0 --port 8000\""
+  },
+  "dependencies": {
+    "lenis": "^1.3.26"
+  }
+}
