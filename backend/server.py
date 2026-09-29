@@ -21,6 +21,7 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from fastapi import FastAPI, APIRouter, Depends, HTTPException, Response, Request, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, EmailStr
 from dotenv import load_dotenv
 from pathlib import Path
@@ -42,6 +43,18 @@ log = logging.getLogger("careerlens")
 
 app = FastAPI(title="CareerLens API", version="1.1.0", description="Privacy-first AI Career & Resume Intelligence Platform")
 api = APIRouter(prefix="/api")
+
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    return JSONResponse(status_code=exc.status_code, content={"ok": False, "detail": exc.detail})
+
+@app.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception):
+    log.exception("Unhandled server error on %s %s", request.method, request.url.path)
+    return JSONResponse(
+        status_code=500,
+        content={"ok": False, "detail": "Something went wrong on the server. Please refresh and try again."},
+    )
 
 # ---------- Pydantic models ----------
 class RegisterIn(BaseModel):
