@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "@/lib/api";
 import { toast } from "sonner";
 import { UserCheck } from "lucide-react";
 
 export default function PersonaSwitcher() {
+  const navigate = useNavigate();
   const [personas, setPersonas] = useState([]);
   const [loadingId, setLoadingId] = useState(null);
 
@@ -17,12 +19,7 @@ export default function PersonaSwitcher() {
       const { data } = await api.post(`/demo/seed-persona?persona_id=${id}`);
       const overall = data.analysis?.scores?.overall ?? "?";
       toast.success(`Loaded demo student ${name} — Score: ${overall}/100`);
-      // Reload current page or navigate to dashboard so full state refreshes
-      if (window.location.pathname === "/dashboard" || window.location.pathname === "/resume") {
-        window.location.reload();
-      } else {
-        window.location.href = "/dashboard";
-      }
+      navigate("/dashboard", { state: { personaLoadedAt: Date.now() } });
     } catch (e) {
       toast.error("Seed failed: " + (e.response?.data?.detail || e.message));
     } finally {

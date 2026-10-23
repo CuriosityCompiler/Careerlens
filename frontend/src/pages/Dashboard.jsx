@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import api from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -28,6 +28,7 @@ const feedIcon = {
 
 export default function Dashboard() {
   const nav = useNavigate();
+  const location = useLocation();
   const [latest, setLatest] = useState(null);
   const [recs, setRecs] = useState([]);
   const [notifs, setNotifs] = useState([]);
@@ -55,7 +56,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     load();
-  }, []);
+  }, [location.key]);
 
   const stats = useMemo(() => {
     const scores = interviews
