@@ -632,6 +632,54 @@ KEYWORDS_BY_TOPIC = {
     "dsa": ["time complexity", "space complexity", "o(1)", "o(n)", "o(log n)", "hash", "tree", "node", "heap", "stack", "queue", "graph", "pointer", "return"],
 }
 
+
+def _is_output_only_hello_world(answer: str, language: str) -> bool:
+    if not re.search(r"\bhello[\s,]+world\b", answer, re.IGNORECASE):
+        return False
+
+    if language == "python":
+        code = re.sub(r"(?m)^\s*#.*$", "", answer)
+    else:
+        code = re.sub(r"/\*.*?\*/|//[^\r\n]*", "", answer, flags=re.DOTALL)
+
+    hello_world_output = re.search(
+        r"(?:\bprint(?:ln|f)?\s*\([^)]*"
+        r"|\bputs\s*\([^)]*"
+        r"|console\s*\.\s*log\s*\([^)]*"
+        r"|system\s*\.\s*out\s*\.\s*print(?:ln)?\s*\([^)]*"
+        r"|\bcout\s*<<[^\r\n;]*)\bhello[\s,]+world\b",
+        code,
+        re.IGNORECASE,
+    )
+    if not hello_world_output:
+        return False
+
+    code_without_strings = re.sub(
+        r"(?m)^\s*if\s+__name__\s*==\s*['\"]__main__['\"]\s*:\s*$",
+        "",
+        code,
+    )
+    code_without_strings = re.sub(
+        r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|`(?:\\.|[^`\\])*`',
+        " ",
+        code_without_strings,
+    )
+    code_without_strings = re.sub(r"\breturn\s+0\s*;?", "", code_without_strings)
+
+    algorithmic_logic = re.search(
+        r"\b(?:for|while|if|switch)\b"
+        r"|\[[^\]\r\n]+\]"
+        r"|(?:==|!=|<=|>=|&&|\|\||\+\+|--|(?<![=!<>])=(?!=))"
+        r"|\b(?:append|push|pop|insert|remove|sort|reverse|enqueue|dequeue|"
+        r"contains|indexof|substring|slice)\s*\("
+        r"|\b(?:vector|array|list|dict|set|map|unordered_map|hashmap|queue|"
+        r"deque|stack|heap|tree|graph|node|linkedlist)\b",
+        code_without_strings,
+        re.IGNORECASE,
+    )
+    return algorithmic_logic is None
+
+
 def evaluate_answer(question: dict, answer: str, language: str = "javascript") -> dict:
     ans = (answer or "").strip()
     if not ans:
@@ -654,6 +702,22 @@ def evaluate_answer(question: dict, answer: str, language: str = "javascript") -
     topic = question.get("topic", "")
     is_coding = question.get("type") == "coding" or "dsa" in topic or "coding" in question.get("q", "").lower()
     language = (language or "javascript").lower()
+
+    if is_coding and _is_output_only_hello_world(ans, language):
+        return {
+            "score": 0,
+            "correctness": 0,
+            "relevance": 0,
+            "completeness": 0,
+            "structure": 0,
+            "clarity": 0,
+            "feedback": "Printing “Hello, World!” does not solve the requested coding problem. No solution logic was detected.",
+            "improvements": [
+                "Implement the algorithm requested in the prompt instead of printing fixed output.",
+                "Use the problem's inputs and handle the required cases.",
+                "Explain the approach and its time and space complexity.",
+            ],
+        }
 
     non_substantive_patterns = [
         r"\b(i\s+(don['’]?t|do not|cannot|can['’]?t|am)\s+(know|understand|answer))\b",

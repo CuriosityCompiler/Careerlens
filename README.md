@@ -31,7 +31,7 @@ Rather than providing black-box scores or hallucinated advice, CareerLens offers
    - **Cooper** (`cooper_data`): Data Analyst
    - Fast one-click switcher in the top navigation bar for immediate judge evaluation.
 5. **Curated & Whitelisted Learning Catalog**:
-   - 40 hand-vetted technical resources from authoritative domains (`react.dev`, `freecodecamp.org`, `developer.mozilla.org`, `fastapi.tiangolo.com`, `docker.com`, `kubernetes.io`, `coursera.org`, etc.).
+   - 50+ curated free learning resources from authoritative providers, spanning software, analytics, cloud, engineering, and career skills.
    - Transparent recommendation scoring factoring in role relevance, gap severity, and effort.
 6. **Analytics & Progress Reporting**:
    - Interactive trend lines for resume and interview scores via Recharts.
@@ -70,13 +70,19 @@ scripts\run_dev.bat
 
 ### 2. Manual Startup
 
-#### Backend:
+Start both the API and frontend together from the repository root:
 ```bash
-cd backend
-python -m pip install -r requirements.txt
-python -m uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+npm run dev
 ```
-- API Docs available at: `http://localhost:8000/docs`
+The development command starts the API on `http://127.0.0.1:8000` before Vite,
+and restarts the API if it exits unexpectedly. Install backend requirements first
+if this is a fresh setup:
+
+```bash
+python -m pip install -r backend/requirements.txt
+```
+
+API Docs are available at: `http://127.0.0.1:8000/docs`
 
 Password recovery sends a six-digit, 10-minute OTP through SMTP. Configure these values in `backend/.env` to enable it; CareerLens does not use a paid OTP API:
 
@@ -90,7 +96,7 @@ SMTP_STARTTLS=true
 SMTP_USE_SSL=false
 ```
 
-#### Frontend:
+To run the same combined development environment from the frontend folder:
 ```bash
 cd frontend
 npm install
@@ -109,4 +115,3 @@ python -m pytest tests/test_api.py -v
 ```
 
 ---
-

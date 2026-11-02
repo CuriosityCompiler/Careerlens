@@ -182,6 +182,6 @@ export default function AuthPage({ mode = "login" }) {
         </p>
       </Card>
       </div>
-    </>
+    </> 
   );
 }

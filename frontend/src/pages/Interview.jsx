@@ -3,6 +3,7 @@ import api from "@/lib/api";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
+import CodeEditor from "@/components/app/CodeEditor";
 import CircuitChallenge from "@/components/CircuitChallenge";
 import { toast } from "sonner";
 import {
@@ -23,6 +24,7 @@ import { useAuth } from "@/lib/auth";
 
 const difficulties = ["beginner", "intermediate", "advanced", "hard"];
 const DSA_LANGUAGES = ["c", "c++", "python", "java", "javascript"];
+const CODE_RUN_TIMEOUT_MS = 45000;
 
 const languageLabels = {
   c: "C",
@@ -175,26 +177,30 @@ export default function Interview() {
       setConsoleOutput("Running code...");
       const { data } = await api.post(
         isCircuitQ ? "/code/run/arduino" : "/code/run",
-        isCircuitQ ? { code } : { language, code }
+        isCircuitQ ? { code } : { language, code },
+        { timeout: CODE_RUN_TIMEOUT_MS }
       );
       const output = data?.output || (data?.ok === false ? data?.error : "Code executed without output.");
       const stderr = data?.ok === false ? null : data?.error;
       setConsoleOutput(stderr ? `${output}\n\n${stderr}` : output);
     } catch (error) {
       const status = error?.response?.status;
-      const normalized = String(error?.response?.data?.detail || error?.message || "").toLowerCase();
-
-      if (status === 404 || normalized.includes("not found")) {
-        setConsoleOutput("The code runner is currently unavailable. Please try again in a moment.");
-        return;
-      }
-
-      if (status === 400 || status === 500 || normalized.includes("execution failed") || normalized.includes("compile")) {
-        setConsoleOutput("Code execution failed. Please check your syntax and try again.");
-        return;
-      }
-
-      setConsoleOutput("The code runner is currently unavailable. Please try again in a moment.");
+      const detail = error?.response?.data?.detail;
+      const message =
+        error?.code === "ECONNABORTED"
+          ? "Code execution took too long. Check for an infinite loop and try again."
+          : status === 401
+            ? "Your session expired. Sign in again before running code."
+            : status === 404
+              ? "The code runner endpoint is missing. Restart the CareerLens development environment to update the API."
+              : status === 429
+                ? "The code runner is receiving too many requests. Wait a moment and try again."
+                : !error?.response
+                  ? "Could not reach the CareerLens API. Check that the backend is running, then try again."
+                  : typeof detail === "string"
+                    ? detail
+                    : `Code runner request failed with status ${status}. Please try again.`;
+      setConsoleOutput(message);
     } finally {
       setRunningCode(false);
     }
@@ -571,14 +577,12 @@ export default function Interview() {
                           </select>
                         </label>
                       </div>
-                      <Textarea
-                        data-testid="iv-answer"
-                        rows={16}
+                      <CodeEditor
                         value={answer}
-                        onChange={(e) => setAnswer(e.target.value)}
-                        placeholder="Write your solution here..."
-                        className="resize-y border-slate-700 bg-slate-950 font-mono text-sm leading-relaxed text-green-300 placeholder-slate-600"
-                        spellCheck={false}
+                        onChange={setAnswer}
+                        language={language}
+                        onRun={runCodeConsole}
+                        disabled={Boolean(evals[idx])}
                       />
 
                       <div className="rounded-xl border border-slate-200 bg-slate-950 p-3 dark:border-slate-700">

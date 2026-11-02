@@ -14,7 +14,7 @@ import smtplib
 import ssl
 import time
 from email.message import EmailMessage
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from typing import Optional, List, Literal
 
 sys.path.insert(0, os.path.dirname(__file__))
@@ -28,7 +28,7 @@ from pathlib import Path
 
 load_dotenv(Path(__file__).parent / ".env")
 
-from utils.db import get_db
+from utils.db import DEMO_USER_ID, get_db
 from utils.auth import SECRET, hash_password, verify_password, create_token, decode_token, get_current_user
 from utils.analyzer import score as analyze_score
 from utils.interview import pick_questions, evaluate_answer, evaluate_circuit_challenge, next_difficulty
@@ -137,32 +137,79 @@ USER_CSV_PATH = Path(__file__).resolve().parent / "data" / "user_accounts.csv"
 
 
 def _run_code_in_sandbox(language: str, code: str) -> dict:
-    import subprocess, tempfile, sys
+    import shutil
+    import subprocess
+    import sys
+    import tempfile
 
     if language == "python":
-        with tempfile.NamedTemporaryFile("w", suffix=".py", delete=False, encoding="utf-8") as f:
-            f.write(code)
-            path = f.name
-        proc = subprocess.run([sys.executable, path], capture_output=True, text=True, timeout=10)
-        output = (proc.stdout or "") + (proc.stderr or "")
-        return {"ok": proc.returncode == 0, "output": output.strip() or "Code executed without output.", "error": proc.stderr.strip() if proc.stderr.strip() else None}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "main.py"
+            path.write_text(code, encoding="utf-8")
+            try:
+                proc = subprocess.run(
+                    [sys.executable, str(path)],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": "Python program exceeded the 10-second run limit."}
+            output = (proc.stdout or "") + (proc.stderr or "")
+            return {
+                "ok": proc.returncode == 0,
+                "output": output.strip() or "Code executed without output.",
+                "error": proc.stderr.strip() if proc.stderr.strip() else None,
+            }
 
     if language == "javascript":
-        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False, encoding="utf-8") as f:
-            f.write(code)
-            path = f.name
-        proc = subprocess.run(["node", path], capture_output=True, text=True, timeout=10)
-        output = (proc.stdout or "") + (proc.stderr or "")
-        return {"ok": proc.returncode == 0, "output": output.strip() or "Code executed without output.", "error": proc.stderr.strip() if proc.stderr.strip() else None}
+        if not shutil.which("node"):
+            return {"ok": False, "output": "", "error": "JavaScript runtime not found. Install Node.js and restart the API."}
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "main.js"
+            path.write_text(code, encoding="utf-8")
+            try:
+                proc = subprocess.run(
+                    ["node", str(path)],
+                    capture_output=True,
+                    text=True,
+                    timeout=10,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": "JavaScript program exceeded the 10-second run limit."}
+            output = (proc.stdout or "") + (proc.stderr or "")
+            return {
+                "ok": proc.returncode == 0,
+                "output": output.strip() or "Code executed without output.",
+                "error": proc.stderr.strip() if proc.stderr.strip() else None,
+            }
 
     if language == "java":
+        if not shutil.which("javac") or not shutil.which("java"):
+            return {"ok": False, "output": "", "error": "Java compiler/runtime not found. Install a JDK and restart the API."}
         with tempfile.TemporaryDirectory() as tmp:
             java_file = Path(tmp) / "Main.java"
             java_file.write_text(code, encoding="utf-8")
-            proc = subprocess.run(["javac", str(java_file)], capture_output=True, text=True, timeout=15)
+            try:
+                proc = subprocess.run(
+                    ["javac", str(java_file)],
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": "Java compilation exceeded the 15-second limit."}
             if proc.returncode != 0:
                 return {"ok": False, "output": "", "error": proc.stderr.strip() or proc.stdout.strip() or "Java compilation failed."}
-            run_proc = subprocess.run(["java", "-cp", str(Path(tmp)), "Main"], capture_output=True, text=True, timeout=15)
+            try:
+                run_proc = subprocess.run(
+                    ["java", "-cp", str(Path(tmp)), "Main"],
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": "Java program exceeded the 15-second run limit."}
             output = (run_proc.stdout or "") + (run_proc.stderr or "")
             return {"ok": run_proc.returncode == 0, "output": output.strip() or "Code executed without output.", "error": run_proc.stderr.strip() if run_proc.stderr.strip() else None}
 
@@ -173,10 +220,32 @@ def _run_code_in_sandbox(language: str, code: str) -> dict:
             exe = Path(tmp) / ("main_c" if language == "c" else "main_cpp")
             src.write_text(code, encoding="utf-8")
             compiler = "gcc" if language == "c" else "g++"
-            proc = subprocess.run([compiler, str(src), "-o", str(exe)], capture_output=True, text=True, timeout=15)
+            if not shutil.which(compiler):
+                return {
+                    "ok": False,
+                    "output": "",
+                    "error": f"{language.upper()} compiler not found. Install {compiler} and restart the API.",
+                }
+            try:
+                proc = subprocess.run(
+                    [compiler, str(src), "-o", str(exe)],
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": f"{language.upper()} compilation exceeded the 15-second limit."}
             if proc.returncode != 0:
                 return {"ok": False, "output": "", "error": proc.stderr.strip() or proc.stdout.strip() or "Compilation failed."}
-            run_proc = subprocess.run([str(exe)], capture_output=True, text=True, timeout=15)
+            try:
+                run_proc = subprocess.run(
+                    [str(exe)],
+                    capture_output=True,
+                    text=True,
+                    timeout=15,
+                )
+            except subprocess.TimeoutExpired:
+                return {"ok": False, "output": "", "error": f"{language.upper()} program exceeded the 15-second run limit."}
             output = (run_proc.stdout or "") + (run_proc.stderr or "")
             return {"ok": run_proc.returncode == 0, "output": output.strip() or "Code executed without output.", "error": run_proc.stderr.strip() if run_proc.stderr.strip() else None}
 
@@ -896,8 +965,39 @@ async def analytics_summary(uid: str = Depends(get_current_user)):
 
     resume_trend = [{"date": a["created_at"][:10], "score": a.get("overall_score", 0)} for a in analyses]
     interview_trend = [{"date": i["created_at"][:10], "score": i.get("summary", {}).get("avg_score", 0)} for i in interviews]
-
     latest = analyses[-1] if analyses else None
+    demo_preview = {"resume": False, "interview": False}
+
+    if uid == DEMO_USER_ID:
+        demo_dates = [
+            (datetime.now(timezone.utc).date() - timedelta(days=21 - index * 7)).isoformat()
+            for index in range(4)
+        ]
+        if len(resume_trend) < 2:
+            latest_score = latest.get("overall_score") if latest else None
+            latest_resume_score = int(latest_score) if latest_score is not None else 78
+            resume_trend = [
+                {"date": demo_dates[0], "score": max(0, latest_resume_score - 24)},
+                {"date": demo_dates[1], "score": max(0, latest_resume_score - 16)},
+                {"date": demo_dates[2], "score": max(0, latest_resume_score - 8)},
+                {
+                    "date": demo_dates[3],
+                    "score": latest_resume_score,
+                },
+            ]
+            demo_preview["resume"] = True
+        if len(interview_trend) < 2:
+            sample_interview_scores = [54, 61, 69, 77]
+            if interviews:
+                latest_interview_score = interviews[-1].get("summary", {}).get("avg_score")
+                if latest_interview_score is not None:
+                    sample_interview_scores[-1] = int(latest_interview_score)
+            interview_trend = [
+                {"date": date, "score": score}
+                for date, score in zip(demo_dates, sample_interview_scores)
+            ]
+            demo_preview["interview"] = True
+
     gap_matrix = latest["result"].get("gap_matrix", []) if latest else []
     closed = sum(1 for g in gap_matrix if g.get("present"))
     total_gaps = len(gap_matrix) or 1
@@ -914,6 +1014,7 @@ async def analytics_summary(uid: str = Depends(get_current_user)):
         "total_analyses": len(analyses),
         "total_interviews": len(interviews),
         "latest_scores": latest["result"].get("scores", {}) if latest else {},
+        "demo_preview": demo_preview,
     }
 
 @api.get("/reports/weekly.csv")

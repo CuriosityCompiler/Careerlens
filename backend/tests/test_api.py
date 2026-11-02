@@ -13,7 +13,7 @@ from utils.auth import hash_password, verify_password, create_token, decode_toke
 from utils.analyzer import score as analyze_score
 from utils.interview import ELECTRONICS_CIRCUIT_RUBRICS, pick_questions, evaluate_answer, evaluate_circuit_challenge, next_difficulty
 from utils.rate_limit import check_mode_b_rate_limit
-from utils.db import STORE_FILE
+from utils.db import DEMO_USER_ID, STORE_FILE
 from data.personas import PERSONAS
 from fastapi import HTTPException
 
@@ -144,12 +144,37 @@ def test_login_rate_limit_and_missing_hash_fails_cleanly():
             assert resp.status_code == 429
             assert "rate limit" in resp.json()["detail"].lower()
 
-def test_dsa_python_hello_world_scores_low_and_language_remains_the_same():
+@pytest.mark.parametrize(
+    ("language", "answer"),
+    [
+        ("python", 'def solve():\n    print("Hello, World!")\n\nif __name__ == "__main__":\n    solve()'),
+        ("javascript", "function solve() {\n  console.log('Hello World');\n}\nsolve();"),
+        ("c", '#include <stdio.h>\nint main(void) {\n  puts("Hello World");\n  return 0;\n}'),
+        ("c++", '#include <iostream>\nint main() {\n  std::cout << "Hello World";\n  return 0;\n}'),
+        ("java", 'class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello, World!");\n  }\n}'),
+    ],
+)
+def test_dsa_hello_world_program_gets_zero_scores(language, answer):
     q = {"q": "DSA Coding: Implement a palindrome check.", "topic": "dsa", "type": "coding"}
-    result = evaluate_answer(q, "print(\"hello world\")", language="python")
-    assert result["score"] < 40
-    assert result["relevance"] < 40
-    assert result["structure"] < 40
+    result = evaluate_answer(q, answer, language=language)
+
+    assert result["score"] == 0
+    assert result["correctness"] == 0
+    assert result["relevance"] == 0
+    assert result["completeness"] == 0
+    assert result["structure"] == 0
+    assert result["clarity"] == 0
+
+
+def test_dsa_solution_can_use_hello_world_as_test_data():
+    q = {"q": "DSA Coding: Reverse a string.", "topic": "dsa", "type": "coding"}
+    answer = 'def reverse_string(value):\n    return value[::-1]\n\nprint(reverse_string("hello world"))'
+
+    result = evaluate_answer(q, answer, language="python")
+
+    assert result["score"] >= 80
+    assert result["correctness"] >= 80
+    assert result["relevance"] >= 80
 
 
 def test_irrelevant_dsa_code_gets_zeroed_metrics():
@@ -189,6 +214,62 @@ def test_code_runner_executes_python_and_javascript():
     )
     assert js_resp.status_code == 200
     assert "hello from js" in js_resp.json()["output"]
+
+
+@pytest.mark.parametrize(
+    ("language", "code", "required_runtimes"),
+    [
+        ("c", '#include <stdio.h>\nint main(void) { puts("hello from c"); return 0; }', ["gcc"]),
+        ("c++", '#include <iostream>\nint main() { std::cout << "hello from c++\\n"; }', ["g++"]),
+        ("java", 'public class Main { public static void main(String[] args) { System.out.println("hello from java"); } }', ["javac", "java"]),
+    ],
+)
+def test_code_runner_executes_compiled_languages(language, code, required_runtimes):
+    import shutil
+
+    if any(shutil.which(runtime) is None for runtime in required_runtimes):
+        pytest.skip(f"Required compiler not installed: {', '.join(required_runtimes)}")
+
+    auth = {"Authorization": "Bearer " + create_token(f"code-runner-{language}", "access")}
+    response = client.post(
+        "/api/code/run",
+        json={"language": language, "code": code},
+        headers=auth,
+    )
+
+    assert response.status_code == 200
+    assert response.json()["ok"] is True
+    assert "hello from" in response.json()["output"]
+
+
+def test_code_runner_reports_missing_runtime(monkeypatch):
+    import shutil
+
+    monkeypatch.setattr(shutil, "which", lambda _: None)
+
+    javascript = server._run_code_in_sandbox("javascript", "console.log('hello')")
+    cpp = server._run_code_in_sandbox("c++", "int main() { return 0; }")
+    java = server._run_code_in_sandbox("java", "public class Main {}")
+
+    assert javascript["ok"] is False
+    assert "Node.js" in javascript["error"]
+    assert cpp["ok"] is False
+    assert "g++" in cpp["error"]
+    assert java["ok"] is False
+    assert "JDK" in java["error"]
+
+
+def test_code_runner_reports_execution_timeout(monkeypatch):
+    import subprocess
+
+    def timeout(*args, **kwargs):
+        raise subprocess.TimeoutExpired(args[0], kwargs["timeout"])
+
+    monkeypatch.setattr(subprocess, "run", timeout)
+    result = server._run_code_in_sandbox("python", "while True: pass")
+
+    assert result["ok"] is False
+    assert "10-second run limit" in result["error"]
 
 
 def test_auth_and_user_flow():
@@ -431,6 +512,71 @@ def test_role_and_resource_library_supports_multidomain_roles():
     assert len(resp.json()) >= 1
 
 
+def test_resource_library_has_expanded_curated_catalog():
+    from data.resources import RESOURCES
+
+    ids = [resource["id"] for resource in RESOURCES]
+    urls = [resource["url"] for resource in RESOURCES]
+
+    assert len(RESOURCES) >= 50
+    assert len(ids) == len(set(ids))
+    assert len(urls) == len(set(urls))
+    assert all(url.startswith("https://") for url in urls)
+    assert {resource["domain"] for resource in RESOURCES} >= {"Software", "Career Skills"}
+
+    response = client.get("/api/resources?search=typescript")
+    assert response.status_code == 200
+    assert any(resource["id"] == "r27" for resource in response.json())
+
+
+def test_demo_analytics_shows_sample_progression_when_history_is_missing(monkeypatch):
+    class Cursor:
+        def __init__(self, documents):
+            self.documents = documents
+
+        def sort(self, key, direction=1):
+            self.documents.sort(key=lambda document: document.get(key, ""), reverse=direction < 0)
+            return self
+
+        async def to_list(self, length=None):
+            return self.documents[:length]
+
+    class Collection:
+        def find(self, query, projection):
+            return Cursor([])
+
+    class Database:
+        analyses = Collection()
+        interviews = Collection()
+
+    monkeypatch.setattr(server, "get_db", lambda: Database())
+    demo_token = create_token(DEMO_USER_ID, "access")
+    response = client.get(
+        "/api/analytics/summary",
+        headers={"Authorization": f"Bearer {demo_token}"},
+    )
+
+    assert response.status_code == 200
+    result = response.json()
+    assert result["demo_preview"] == {"resume": True, "interview": True}
+    assert len(result["resume_trend"]) == 4
+    assert len(result["interview_trend"]) == 4
+    assert all(0 <= point["score"] <= 100 for point in result["resume_trend"])
+    assert all(0 <= point["score"] <= 100 for point in result["interview_trend"])
+    assert result["resume_trend"][-1]["score"] > result["resume_trend"][0]["score"]
+    assert result["interview_trend"][-1]["score"] > result["interview_trend"][0]["score"]
+
+    regular_token = create_token("regular-user", "access")
+    regular_response = client.get(
+        "/api/analytics/summary",
+        headers={"Authorization": f"Bearer {regular_token}"},
+    )
+    assert regular_response.status_code == 200
+    assert regular_response.json()["demo_preview"] == {"resume": False, "interview": False}
+    assert regular_response.json()["resume_trend"] == []
+    assert regular_response.json()["interview_trend"] == []
+
+
 def test_department_specific_interview_questions_for_embedded_role():
     from utils.interview import pick_questions
 
@@ -603,4 +749,3 @@ def test_file_extraction_endpoint():
     data = resp.json()
     assert "React" in data["text"]
     assert data["filename"] == "resume.txt"
-

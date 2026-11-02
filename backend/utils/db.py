@@ -9,6 +9,7 @@ from urllib.parse import urlparse
 log = logging.getLogger("careerlens.db")
 
 STORE_FILE = Path(__file__).resolve().parent.parent / "data" / "careerlens_store.json"
+DEMO_USER_ID = "demo-student-id-001"
 
 class AsyncCursor:
     def __init__(self, items):
@@ -152,7 +153,7 @@ class LocalDatabase:
         from utils.auth import hash_password
         users_col = LocalAsyncCollection("users", self)
         demo_user = {
-            "id": "demo-student-id-001",
+            "id": DEMO_USER_ID,
             "email": "demo@careerlens.ai",
             "name": "Demo Student",
             "password_hash": hash_password("demo1234"),

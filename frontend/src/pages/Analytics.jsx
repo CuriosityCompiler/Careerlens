@@ -111,8 +111,18 @@ export default function Analytics() {
       {/* Charts Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         <Card className="p-5 border-slate-200 bg-white shadow-xs" data-testid="chart-resume-trend">
-          <div className="font-bold text-slate-900 mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
-            Resume Score Progression
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="font-bold text-slate-900" style={{ fontFamily: "Outfit, sans-serif" }}>
+              Resume Score Progression
+            </div>
+            {data?.demo_preview?.resume && (
+              <span
+                className="text-[11px] font-medium text-indigo-700 dark:text-indigo-300"
+                data-testid="demo-preview-resume"
+              >
+                Sample demo progression
+              </span>
+            )}
           </div>
           {data?.resume_trend?.length > 0 ? (
             <ResponsiveContainer width="100%" height={240}>
@@ -132,8 +142,18 @@ export default function Analytics() {
         </Card>
 
         <Card className="p-5 border-slate-200 bg-white shadow-xs" data-testid="chart-interview-trend">
-          <div className="font-bold text-slate-900 mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
-            Mock Interview Score Progression
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div className="font-bold text-slate-900" style={{ fontFamily: "Outfit, sans-serif" }}>
+              Mock Interview Score Progression
+            </div>
+            {data?.demo_preview?.interview && (
+              <span
+                className="text-[11px] font-medium text-emerald-700 dark:text-emerald-300"
+                data-testid="demo-preview-interview"
+              >
+                Sample demo progression
+              </span>
+            )}
           </div>
           {data?.interview_trend?.length > 0 ? (
             <ResponsiveContainer width="100%" height={240}>

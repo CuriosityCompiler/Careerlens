@@ -1519,6 +1519,64 @@
       "profile_pic": "",
       "_id": "76",
       "updated_at": "2026-10-23T11:10:20.096815+00:00"
+    },
+    {
+      "id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "email": "test_a1f1f4a5@example.com",
+      "name": "Test Candidate",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$yA16l1XNNqJaPNjSYTSJ9w$35Kzn5gioQWLMUJr824tNPUn0rO41h2sQpC548ksYoU",
+      "created_at": "2026-11-02T20:45:31.706820+00:00",
+      "onboarding_done": true,
+      "privacy_mode": "A",
+      "target_role": "backend",
+      "education": "BS CS",
+      "skills": [
+        "python",
+        "sql"
+      ],
+      "preferences": {},
+      "bio": "Software developer passionate about algorithms.",
+      "github": "https://github.com/myuser",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "77",
+      "updated_at": "2026-11-02T20:45:32.013902+00:00"
+    },
+    {
+      "id": "238a57f3-ca3c-4627-a5f2-8fc2d97f16f3",
+      "email": "csv_9d04bf19@example.com",
+      "name": "CSV Test User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$E8nuVUBmk754h6oD/EwP3A$Qdb5DRgi7EoOLLX7MzR3/NZtGOyGaa0ap2MEptjz8Ys",
+      "created_at": "2026-11-02T20:45:33.185243+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "78"
+    },
+    {
+      "id": "2678aee1-3c74-492a-b9e5-db5f06da7f81",
+      "email": "csv_fail_9a228c07@example.com",
+      "name": "CSV Fail User",
+      "password_hash": "$argon2id$v=19$m=65536,t=3,p=4$/kav5r8GLqHaQmqjf0mcjw$hvCRJx3su8TO1ai5WZHA3+i47GFMxZhFnb1ZanFCDMQ",
+      "created_at": "2026-11-02T20:45:33.327033+00:00",
+      "onboarding_done": false,
+      "privacy_mode": "A",
+      "target_role": "frontend",
+      "education": "",
+      "skills": [],
+      "preferences": {},
+      "bio": "",
+      "github": "",
+      "linkedin": "",
+      "profile_pic": "",
+      "_id": "79"
     }
   ],
   "resumes": [
@@ -2251,6 +2309,83 @@
       "text": null,
       "text_length": 866,
       "_id": "65"
+    },
+    {
+      "id": "bf01e760-1056-4ef9-bc84-d0b41427b96c",
+      "user_id": "demo-student-id-001",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-11-02T19:46:29.940843+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "66"
+    },
+    {
+      "id": "d3a0e120-f6e0-4a52-a32b-5200fdcc6269",
+      "user_id": "demo-student-id-001",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-11-02T20:04:59.807990+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "67"
+    },
+    {
+      "id": "a8ca9d77-82b3-471a-8e47-822ad4ed2cce",
+      "user_id": "demo-student-id-001",
+      "filename": "travis_backend_resume.txt",
+      "target_role": "backend",
+      "created_at": "2026-11-02T20:05:07.174931+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 780,
+      "_id": "68"
+    },
+    {
+      "id": "b234f1ac-4017-4f1f-9bf4-b1f580b70404",
+      "user_id": "demo-student-id-001",
+      "filename": "cooper_data_resume.txt",
+      "target_role": "data_analyst",
+      "created_at": "2026-11-02T20:05:11.991516+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 774,
+      "_id": "69"
+    },
+    {
+      "id": "8f059f83-2bff-45e3-98ed-e8ac63d54c4e",
+      "user_id": "demo-student-id-001",
+      "filename": "travis_backend_resume.txt",
+      "target_role": "backend",
+      "created_at": "2026-11-02T20:05:16.487057+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 780,
+      "_id": "70"
+    },
+    {
+      "id": "16e2e757-13a2-4f8f-88ef-aec74e2e282a",
+      "user_id": "demo-student-id-001",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-11-02T20:05:17.726526+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "71"
+    },
+    {
+      "id": "e706ee0e-1c4b-470c-a891-101395267caf",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "filename": "vic_frontend_resume.txt",
+      "target_role": "frontend",
+      "created_at": "2026-11-02T20:45:31.818636+00:00",
+      "mode": "A",
+      "text": null,
+      "text_length": 866,
+      "_id": "72"
     }
   ],
   "analyses": [
@@ -17861,6 +17996,1711 @@
       "created_at": "2026-10-23T11:10:19.969408+00:00",
       "overall_score": 74,
       "_id": "65"
+    },
+    {
+      "id": "dd54641e-fc31-4362-af56-09550e953503",
+      "user_id": "demo-student-id-001",
+      "resume_id": "bf01e760-1056-4ef9-bc84-d0b41427b96c",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T19:46:29.966624+00:00",
+      "overall_score": 74,
+      "_id": "66"
+    },
+    {
+      "id": "031e6f44-b80c-4008-a5ab-c9f68901b826",
+      "user_id": "demo-student-id-001",
+      "resume_id": "d3a0e120-f6e0-4a52-a32b-5200fdcc6269",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:04:59.836329+00:00",
+      "overall_score": 74,
+      "_id": "67"
+    },
+    {
+      "id": "160f0cad-a328-443e-90e1-fc4811eb6913",
+      "user_id": "demo-student-id-001",
+      "resume_id": "a8ca9d77-82b3-471a-8e47-822ad4ed2cce",
+      "target_role": "backend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 65,
+          "ats_readiness": 80,
+          "role_alignment": 67,
+          "skill_coverage": 52,
+          "achievement_strength": 40,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 80/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2717 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Backend Engineer: 67/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 5/6. Nice-to-have hit: 3/7.",
+            "next": "Add missing must-have skills with concrete usage: api"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: docker, fastapi, git, go, linux, mongodb, mysql, postgresql",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 2 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "docker",
+          "fastapi",
+          "git",
+          "go",
+          "linux",
+          "mongodb",
+          "mysql",
+          "postgresql",
+          "pytest",
+          "python",
+          "redis",
+          "rest",
+          "sql"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "python",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "sql",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "rest",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "api",
+            "level": "must",
+            "present": false,
+            "severity": "high"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "linux",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "fastapi",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "django",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "postgres",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "redis",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "docker",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "kubernetes",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "kafka",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [
+          "api"
+        ],
+        "missing_nice": [
+          "django",
+          "postgres",
+          "kubernetes",
+          "kafka"
+        ],
+        "role": {
+          "id": "backend",
+          "name": "Backend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "python",
+            "sql",
+            "rest",
+            "api",
+            "git",
+            "linux"
+          ],
+          "nice_to_have": [
+            "fastapi",
+            "django",
+            "postgres",
+            "redis",
+            "docker",
+            "kubernetes",
+            "kafka"
+          ],
+          "keywords": [
+            "scalability",
+            "latency",
+            "throughput",
+            "microservices",
+            "queue",
+            "api",
+            "sql",
+            "python"
+          ],
+          "seniority_markers": [
+            "designed",
+            "scaled",
+            "led",
+            "architected"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": false,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:05:07.200125+00:00",
+      "overall_score": 65,
+      "_id": "68"
+    },
+    {
+      "id": "c18715f8-ebc9-4eaf-bbe9-cdf1fb507c16",
+      "user_id": "demo-student-id-001",
+      "resume_id": "b234f1ac-4017-4f1f-9bf4-b1f580b70404",
+      "target_role": "data_analyst",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 60,
+          "ats_readiness": 80,
+          "role_alignment": 68,
+          "skill_coverage": 32,
+          "achievement_strength": 20,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 80/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2717 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Data Analyst: 68/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 5/5. Nice-to-have hit: 1/5.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 8 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: excel, git, pandas, python, snowflake, sql, statistics, tableau",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 1 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "excel",
+          "git",
+          "pandas",
+          "python",
+          "snowflake",
+          "sql",
+          "statistics",
+          "tableau"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "sql",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "excel",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "python",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "statistics",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "tableau",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "powerbi",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "dbt",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "airflow",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "pandas",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "looker",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "powerbi",
+          "dbt",
+          "airflow",
+          "looker"
+        ],
+        "role": {
+          "id": "data_analyst",
+          "name": "Data Analyst",
+          "department": "CSE/Software",
+          "must_have": [
+            "sql",
+            "excel",
+            "python",
+            "statistics",
+            "tableau"
+          ],
+          "nice_to_have": [
+            "powerbi",
+            "dbt",
+            "airflow",
+            "pandas",
+            "looker"
+          ],
+          "keywords": [
+            "dashboards",
+            "insights",
+            "kpi",
+            "reporting",
+            "a/b test",
+            "sql",
+            "python"
+          ],
+          "seniority_markers": [
+            "led",
+            "drove",
+            "delivered insights"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": false,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:05:12.019532+00:00",
+      "overall_score": 60,
+      "_id": "69"
+    },
+    {
+      "id": "f158ba52-1e7b-4886-8016-e3cdc7942127",
+      "user_id": "demo-student-id-001",
+      "resume_id": "8f059f83-2bff-45e3-98ed-e8ac63d54c4e",
+      "target_role": "backend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 65,
+          "ats_readiness": 80,
+          "role_alignment": 67,
+          "skill_coverage": 52,
+          "achievement_strength": 40,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 80/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2717 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Backend Engineer: 67/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 5/6. Nice-to-have hit: 3/7.",
+            "next": "Add missing must-have skills with concrete usage: api"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: docker, fastapi, git, go, linux, mongodb, mysql, postgresql",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 2 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "docker",
+          "fastapi",
+          "git",
+          "go",
+          "linux",
+          "mongodb",
+          "mysql",
+          "postgresql",
+          "pytest",
+          "python",
+          "redis",
+          "rest",
+          "sql"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "python",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "sql",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "rest",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "api",
+            "level": "must",
+            "present": false,
+            "severity": "high"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "linux",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "fastapi",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "django",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "postgres",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "redis",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "docker",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "kubernetes",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "kafka",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [
+          "api"
+        ],
+        "missing_nice": [
+          "django",
+          "postgres",
+          "kubernetes",
+          "kafka"
+        ],
+        "role": {
+          "id": "backend",
+          "name": "Backend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "python",
+            "sql",
+            "rest",
+            "api",
+            "git",
+            "linux"
+          ],
+          "nice_to_have": [
+            "fastapi",
+            "django",
+            "postgres",
+            "redis",
+            "docker",
+            "kubernetes",
+            "kafka"
+          ],
+          "keywords": [
+            "scalability",
+            "latency",
+            "throughput",
+            "microservices",
+            "queue",
+            "api",
+            "sql",
+            "python"
+          ],
+          "seniority_markers": [
+            "designed",
+            "scaled",
+            "led",
+            "architected"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": false,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:05:16.513490+00:00",
+      "overall_score": 65,
+      "_id": "70"
+    },
+    {
+      "id": "abfaf766-366a-4271-b8d0-c1e9789bc0a0",
+      "user_id": "demo-student-id-001",
+      "resume_id": "16e2e757-13a2-4f8f-88ef-aec74e2e282a",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:05:17.751845+00:00",
+      "overall_score": 74,
+      "_id": "71"
+    },
+    {
+      "id": "b8f1d9a5-8539-41d2-ad70-f2849050a921",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "resume_id": "e706ee0e-1c4b-470c-a891-101395267caf",
+      "target_role": "frontend",
+      "result": {
+        "empty_or_joke": false,
+        "scores": {
+          "overall": 74,
+          "ats_readiness": 90,
+          "role_alignment": 80,
+          "skill_coverage": 52,
+          "achievement_strength": 60,
+          "project_strength": 68,
+          "completeness": 85
+        },
+        "explanations": {
+          "ats_readiness": {
+            "what": "ATS Readiness scored 90/100 across 8 transparent rules.",
+            "why": "ATS engines reject or downrank resumes missing standard sections, bullets, and quantifiable claims.",
+            "how": "Checklist: \u2713 Contact block detected; \u2713 Skills section detected; \u2713 Experience section detected; \u2713 Education section detected; \u2713 Uses standard bullet formatting; \u2713 No overly long lines; \u2717 Reasonable length (150+ words); \u2713 Has at least 3 quantified achievements",
+            "next": "Fix any \u2717 items. Aim for at least 3 bullets with numbers or % impact."
+          },
+          "role_alignment": {
+            "what": "Role Alignment for Frontend Engineer: 80/100.",
+            "why": "Recruiters filter by must-have keywords first; alignment predicts callback rate.",
+            "how": "Must-have hit: 6/6. Nice-to-have hit: 3/6.",
+            "next": "Add missing must-have skills with concrete usage: none -> great coverage!"
+          },
+          "skill_coverage": {
+            "what": "Detected 13 distinct skills across your resume.",
+            "why": "Breadth signals versatility; recruiters skim for domain vocabulary.",
+            "how": "Sample detected: css, figma, git, html, javascript, jest, next.js, react",
+            "next": "Group skills into buckets (Languages / Frameworks / Tools) for scannability."
+          },
+          "achievement_strength": {
+            "what": "Found 3 quantified achievement bullets.",
+            "why": "Bullets with numbers get 40% more recruiter attention than duty descriptions.",
+            "how": "Verb + number + outcome pattern: 'Reduced load time 34% via code-splitting.'",
+            "next": "Rewrite duty-style bullets into result-style using verb + metric + outcome."
+          },
+          "project_strength": {
+            "what": "Detected roughly 2 projects.",
+            "why": "Projects are the primary evidence of ability for early-career candidates.",
+            "how": "State stack, your role, one metric, and a live link where possible.",
+            "next": "Add a second project targeting your role with a measurable result."
+          },
+          "completeness": {
+            "what": "6/7 standard sections detected.",
+            "why": "Missing sections cause recruiter confusion and ATS parsing gaps.",
+            "how": "Detected: contact, education, experience, skills, projects, certifications. Missing: achievements",
+            "next": "Add missing sections to lift completeness to 100."
+          }
+        },
+        "skills_detected": [
+          "css",
+          "figma",
+          "git",
+          "html",
+          "javascript",
+          "jest",
+          "next.js",
+          "react",
+          "redux",
+          "rest",
+          "tailwind",
+          "testing",
+          "typescript"
+        ],
+        "sections": {
+          "contact": true,
+          "education": true,
+          "experience": true,
+          "skills": true,
+          "projects": true,
+          "certifications": true,
+          "achievements": false
+        },
+        "gap_matrix": [
+          {
+            "skill": "javascript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "react",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "html",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "css",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "typescript",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "git",
+            "level": "must",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "nextjs",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "tailwind",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "redux",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "testing",
+            "level": "nice",
+            "present": true,
+            "severity": "none"
+          },
+          {
+            "skill": "webpack",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          },
+          {
+            "skill": "graphql",
+            "level": "nice",
+            "present": false,
+            "severity": "medium"
+          }
+        ],
+        "missing_must": [],
+        "missing_nice": [
+          "nextjs",
+          "webpack",
+          "graphql"
+        ],
+        "role": {
+          "id": "frontend",
+          "name": "Frontend Engineer",
+          "department": "CSE/Software",
+          "must_have": [
+            "javascript",
+            "react",
+            "html",
+            "css",
+            "typescript",
+            "git"
+          ],
+          "nice_to_have": [
+            "nextjs",
+            "tailwind",
+            "redux",
+            "testing",
+            "webpack",
+            "graphql"
+          ],
+          "keywords": [
+            "responsive",
+            "accessibility",
+            "performance",
+            "web vitals",
+            "component",
+            "react",
+            "javascript",
+            "css"
+          ],
+          "seniority_markers": [
+            "led",
+            "architected",
+            "mentored",
+            "shipped",
+            "owned"
+          ]
+        },
+        "ats_checklist": [
+          {
+            "name": "Contact block detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Skills section detected",
+            "pass": true,
+            "weight": 15
+          },
+          {
+            "name": "Experience section detected",
+            "pass": true,
+            "weight": 20
+          },
+          {
+            "name": "Education section detected",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Uses standard bullet formatting",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "No overly long lines",
+            "pass": true,
+            "weight": 10
+          },
+          {
+            "name": "Reasonable length (150+ words)",
+            "pass": false,
+            "weight": 10
+          },
+          {
+            "name": "Has at least 3 quantified achievements",
+            "pass": true,
+            "weight": 10
+          }
+        ],
+        "mode": "A"
+      },
+      "created_at": "2026-11-02T20:45:31.844951+00:00",
+      "overall_score": 74,
+      "_id": "72"
     }
   ],
   "recommendations": [
@@ -21152,6 +22992,37 @@
       "created_at": "2026-09-28T14:39:11.671376+00:00",
       "import_source_id": "demo-student-id-001:2388331d-b323-4d73-baef-565a2cdbb0cd",
       "_id": "135"
+    },
+    {
+      "id": "7552b1ee-46d7-4366-8e61-6ab4807652d4",
+      "resource": {
+        "id": "r29",
+        "domain": "Software",
+        "targetRole": "fullstack",
+        "topic": "nextjs",
+        "name": "Next.js Learn",
+        "provider": "Vercel",
+        "type": "Tutorial",
+        "difficulty": "Intermediate",
+        "cost": "Free",
+        "effort": "8-10 hours",
+        "url": "https://nextjs.org/learn",
+        "description": "Build a complete web application while learning Next.js fundamentals.",
+        "skill": "nextjs",
+        "title": "Next.js Learn"
+      },
+      "target_skill": "nextjs",
+      "role_id": "frontend",
+      "priority": "medium",
+      "score": 0.48,
+      "reason": "Targets nice-to-have skill 'nextjs' for Frontend Engineer.",
+      "effort": "8-10 hours",
+      "expected_outcome": "Boost role alignment and close skill gap for 'nextjs'.",
+      "title": "Next.js Learn",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "resume_id": "e706ee0e-1c4b-470c-a891-101395267caf",
+      "created_at": "2026-11-02T20:45:31.873706+00:00",
+      "_id": "136"
     }
   ],
   "events": [
@@ -21920,6 +23791,83 @@
       },
       "created_at": "2026-10-23T11:10:19.995770+00:00",
       "_id": "66"
+    },
+    {
+      "id": "ae516205-8891-4bfd-b9c2-72e146245a99",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "bf01e760-1056-4ef9-bc84-d0b41427b96c",
+        "score": 74
+      },
+      "created_at": "2026-11-02T19:46:29.990360+00:00",
+      "_id": "67"
+    },
+    {
+      "id": "eaa0cb7d-f931-4221-9a93-857ace381a50",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "d3a0e120-f6e0-4a52-a32b-5200fdcc6269",
+        "score": 74
+      },
+      "created_at": "2026-11-02T20:04:59.862391+00:00",
+      "_id": "68"
+    },
+    {
+      "id": "03efe52e-2b91-4ce4-a688-2fe058ad7ee6",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "a8ca9d77-82b3-471a-8e47-822ad4ed2cce",
+        "score": 65
+      },
+      "created_at": "2026-11-02T20:05:07.224590+00:00",
+      "_id": "69"
+    },
+    {
+      "id": "bc49bc69-7fed-47c7-a97d-b4abec5fe4fa",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "b234f1ac-4017-4f1f-9bf4-b1f580b70404",
+        "score": 60
+      },
+      "created_at": "2026-11-02T20:05:12.053077+00:00",
+      "_id": "70"
+    },
+    {
+      "id": "2fe7b996-bddc-4597-bd89-6693b7286725",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "8f059f83-2bff-45e3-98ed-e8ac63d54c4e",
+        "score": 65
+      },
+      "created_at": "2026-11-02T20:05:16.538700+00:00",
+      "_id": "71"
+    },
+    {
+      "id": "a4bd9e08-24f3-4354-9b3d-d3dab5b7b5b6",
+      "user_id": "demo-student-id-001",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "16e2e757-13a2-4f8f-88ef-aec74e2e282a",
+        "score": 74
+      },
+      "created_at": "2026-11-02T20:05:17.778852+00:00",
+      "_id": "72"
+    },
+    {
+      "id": "264263da-5f7a-47d5-b84e-5ddc856a2dae",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "kind": "resume.analyzed",
+      "payload": {
+        "resume_id": "e706ee0e-1c4b-470c-a891-101395267caf",
+        "score": 74
+      },
+      "created_at": "2026-11-02T20:45:31.898701+00:00",
+      "_id": "73"
     }
   ],
   "notifications": [
@@ -22577,6 +24525,76 @@
       "read": false,
       "created_at": "2026-10-23T11:10:20.021476+00:00",
       "_id": "64"
+    },
+    {
+      "id": "e34ad734-c01e-4bee-8568-1f1a0e7729a6",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T19:46:30.015301+00:00",
+      "_id": "65"
+    },
+    {
+      "id": "818f4f8c-7408-443a-90e5-df67be481042",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T20:04:59.895399+00:00",
+      "_id": "66"
+    },
+    {
+      "id": "226cf353-8322-4038-9015-f38b994674cf",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 65/100 for Backend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T20:05:07.251839+00:00",
+      "_id": "67"
+    },
+    {
+      "id": "c0da01e7-2ddc-45e2-bad1-1ed91d90e0cf",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 60/100 for Data Analyst.",
+      "read": false,
+      "created_at": "2026-11-02T20:05:12.084052+00:00",
+      "_id": "68"
+    },
+    {
+      "id": "8e9f8623-0708-4aa1-ac79-3ded632a205c",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 65/100 for Backend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T20:05:16.562745+00:00",
+      "_id": "69"
+    },
+    {
+      "id": "2b3d1444-e4f7-4716-a897-6f4bee1beaf5",
+      "user_id": "demo-student-id-001",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T20:05:17.805833+00:00",
+      "_id": "70"
+    },
+    {
+      "id": "8ad6ff67-f306-4487-baeb-ed41c930b7fa",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "type": "PROGRESS",
+      "title": "Resume analyzed",
+      "body": "Overall score: 74/100 for Frontend Engineer.",
+      "read": false,
+      "created_at": "2026-11-02T20:45:31.925424+00:00",
+      "_id": "71"
     }
   ],
   "interviews": [
@@ -28945,6 +30963,356 @@
       "created_at": "2026-10-23T11:10:20.050359+00:00",
       "status": "in_progress",
       "_id": "133"
+    },
+    {
+      "id": "e81bb6b0-7977-4b10-bca5-713c04150a93",
+      "user_id": "demo-student-id-001",
+      "role_id": "java_developer",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a custom Bounded Blocking Queue in Java using synchronization primitives (wait/notify or ReentrantLock and Condition).",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "public class BoundedBlockingQueue<T> {\n    private int capacity;\n    public BoundedBlockingQueue(int capacity) {\n        this.capacity = capacity;\n    }\n    public void enqueue(T item) throws InterruptedException {\n        // block if full\n    }\n    public T dequeue() throws InterruptedException {\n        // block if empty\n    }\n}"
+        },
+        {
+          "q": "Design a distributed cache layer with Redis and Spring Boot for high-read APIs.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How does Spring dependency injection work under the hood with BeanFactory?",
+          "topic": "spring",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-11-02T20:01:22.560818+00:00",
+      "status": "in_progress",
+      "_id": "134"
+    },
+    {
+      "id": "c166f8d1-ab9e-4c08-bea8-5f50ca1b852d",
+      "user_id": "demo-student-id-001",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-11-02T20:15:53.862864+00:00",
+      "status": "in_progress",
+      "_id": "135"
+    },
+    {
+      "id": "577a3b3e-2a95-4ea5-b7a4-660b14080f59",
+      "user_id": "demo-student-id-001",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-11-02T20:21:09.406436+00:00",
+      "status": "in_progress",
+      "_id": "136"
+    },
+    {
+      "id": "e3631dae-fb16-4fd8-ba3e-31a691bf37fc",
+      "user_id": "demo-student-id-001",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [
+        "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello world\");\n    }\n}"
+      ],
+      "evaluations": [
+        {
+          "score": 49,
+          "correctness": 35,
+          "relevance": 42,
+          "completeness": 53,
+          "structure": 75,
+          "clarity": 65,
+          "feedback": "Detected 1 relevant concept(s), 1 code signals, 14 words, structure score 75.",
+          "improvements": [
+            "Explicitly state Big-O Time and Space complexity (e.g. O(1) lookup, O(N) space).",
+            "Incorporate core algorithmic primitives: time complexity, space complexity, o(1), o(n)."
+          ]
+        }
+      ],
+      "created_at": "2026-11-02T20:40:29.286165+00:00",
+      "status": "in_progress",
+      "_id": "137",
+      "updated_at": "2026-11-02T20:41:05.857766+00:00"
+    },
+    {
+      "id": "bad20c3f-064a-4817-b22f-e2df2087f332",
+      "user_id": "4acfa363-1914-4d0e-b94b-fbde4e5518e0",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "python",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [],
+      "evaluations": [],
+      "created_at": "2026-11-02T20:45:31.953548+00:00",
+      "status": "in_progress",
+      "_id": "138"
+    },
+    {
+      "id": "af126f49-8e5c-4db6-869c-545861e59ccf",
+      "user_id": "electronics-353759a7fe884707bb8f3692d6fd8e94",
+      "role_id": "electronics_engineer",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "A sealed equipment cabinet overheats intermittently, and its existing fan is controlled manually. Build an Arduino Uno solution that monitors cabinet temperature, controls the fan automatically, reports operating state, and enters a safe state if the sensor becomes invalid. It must tolerate noisy readings and avoid rapid fan switching.",
+          "topic": "circuit design and fault handling",
+          "type": "circuit",
+          "challenge_id": "thermal_failsafe"
+        },
+        {
+          "q": "A small motorized gate must stop before contacting an approaching object and remain controllable by an operator. Build an Arduino Uno solution for the gate, including an emergency stop and clear status indication. The distance sensor may time out, and the motor supply can introduce electrical noise.",
+          "topic": "motor control and safety",
+          "type": "circuit",
+          "challenge_id": "motorized_gate"
+        },
+        {
+          "q": "A workshop wants a standalone station that detects a person entering a restricted zone, sounds an alarm, displays system state, and requires deliberate acknowledgement before returning to monitoring. Design the Arduino Uno circuit and firmware for noisy sensor input, startup, and sensor-fault conditions.",
+          "topic": "system integration and debugging",
+          "type": "circuit",
+          "challenge_id": "restricted_zone"
+        }
+      ],
+      "strict_practical": true,
+      "answers": [
+        ""
+      ],
+      "evaluations": [
+        {
+          "score": 0,
+          "correctness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "structure": 0,
+          "clarity": 0,
+          "circuit": 0,
+          "component_selection": 0,
+          "code": 0,
+          "logic": 0,
+          "behavior": 0,
+          "firmware_valid": false,
+          "wired_pin_match": true,
+          "unwired_code_pins": [],
+          "feedback": "Automated rubric: 0/11 circuit nets, 0/7 component groups, 0/6 firmware checks, and 0/4 source-level behavior checks passed. Firmware was not compiled or run on physical hardware.",
+          "improvements": [
+            "Component selection is incomplete: thermistor, resistor, dc motor, transistor, led, diode, battery.",
+            "11 required electrical net(s) are missing or incorrect.",
+            "Firmware evidence is missing for: arduino sketch structure.",
+            "Firmware evidence is missing for: temperature acquisition.",
+            "Firmware evidence is missing for: fan output control.",
+            "Firmware evidence is missing for: time-based sampling.",
+            "Firmware evidence is missing for: invalid sensor handling.",
+            "Firmware evidence is missing for: noise / rapid-switching control.",
+            "Scenario behavior not demonstrated: invalid sensor is detected.",
+            "Scenario behavior not demonstrated: fan reaches a safe state.",
+            "Scenario behavior not demonstrated: noisy input does not cause rapid switching.",
+            "Scenario behavior not demonstrated: temperature controls fan state.",
+            "Arduino sketch is empty."
+          ]
+        }
+      ],
+      "created_at": "2026-11-02T20:45:33.382992+00:00",
+      "status": "in_progress",
+      "_id": "139",
+      "updated_at": "2026-11-02T20:45:33.424472+00:00"
+    },
+    {
+      "id": "75fc894b-8a29-4633-a4b6-00dc2a6bbbfd",
+      "user_id": "demo-student-id-001",
+      "role_id": "backend",
+      "difficulty": "hard",
+      "language": "javascript",
+      "questions": [
+        {
+          "q": "DSA Coding: Implement a Thread-Safe In-Memory Cache with TTL (Time-To-Live) and an O(1) eviction policy in Python or Go. Handle race conditions during concurrent reads and writes.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "import time\nimport threading\n\nclass TTLCache:\n    def __init__(self, capacity: int, default_ttl: float):\n        self.capacity = capacity\n        self.default_ttl = default_ttl\n        self.lock = threading.Lock()\n        self.store = {}\n\n    def get(self, key):\n        pass\n\n    def set(self, key, value, ttl=None):\n        pass"
+        },
+        {
+          "q": "DSA Coding: Given a list of service dependencies (task A must run before task B), implement a Topological Sort algorithm to determine a valid startup sequence or detect circular dependency deadlocks.",
+          "topic": "dsa",
+          "type": "coding",
+          "starter_code": "from typing import List, Tuple\n\ndef find_build_order(num_services: int, dependencies: List[Tuple[int, int]]) -> List[int]:\n    # Implement Kahn's Algorithm (indegree) or DFS\n    pass"
+        },
+        {
+          "q": "DSA Coding: Implement a Token Bucket Rate Limiter algorithm in Python. Given capacity and refill_rate_per_sec, write allow_request(tokens=1) returning True if allowed, False if throttled.",
+          "topic": "system design",
+          "type": "coding",
+          "starter_code": "import time\n\nclass TokenBucket:\n    def __init__(self, capacity: int, refill_rate: float):\n        self.capacity = capacity\n        self.refill_rate = refill_rate\n        self.tokens = capacity\n        self.last_refill = time.time()\n\n    def allow_request(self, tokens: int = 1) -> bool:\n        pass"
+        },
+        {
+          "q": "Design a high-throughput rate limiter for a public API using Redis token buckets.",
+          "topic": "system design",
+          "type": "technical"
+        },
+        {
+          "q": "How would you build a reliable event streaming pipeline with Kafka for order events?",
+          "topic": "kafka",
+          "type": "technical"
+        }
+      ],
+      "strict_practical": false,
+      "answers": [
+        "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Hello world\");\n    }\n}"
+      ],
+      "evaluations": [
+        {
+          "score": 0,
+          "correctness": 0,
+          "relevance": 0,
+          "completeness": 0,
+          "structure": 0,
+          "clarity": 0,
+          "feedback": "Printing \u201cHello, World!\u201d does not solve the requested coding problem. No solution logic was detected.",
+          "improvements": [
+            "Implement the algorithm requested in the prompt instead of printing fixed output.",
+            "Use the problem's inputs and handle the required cases.",
+            "Explain the approach and its time and space complexity."
+          ]
+        }
+      ],
+      "created_at": "2026-11-02T20:46:19.982413+00:00",
+      "status": "in_progress",
+      "_id": "140",
+      "updated_at": "2026-11-02T20:46:41.336596+00:00"
     }
   ],
   "password_reset_codes": []
