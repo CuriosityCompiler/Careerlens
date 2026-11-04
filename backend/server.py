@@ -37,6 +37,7 @@ from utils.extractor import extract_document_text
 from data.roles import ROLES, ROLES_BY_ID
 from data.resources import RESOURCES
 from data.personas import PERSONAS
+from utils.career_opportunities import VALID_EXPERIENCE_LEVELS, build_career_opportunities
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s %(message)s")
 log = logging.getLogger("careerlens")
@@ -91,11 +92,15 @@ class OnboardingIn(BaseModel):
     skills: List[str] = []
     preferences: dict = {}
     privacy_mode: Literal["A", "B"] = "A"
+    experience_level: Literal["fresher", "entry_level", "junior", "mid_level", "senior"] = "fresher"
+    experience_years: Optional[float] = Field(default=None, ge=0, le=50)
 
 class ProfileUpdateIn(BaseModel):
     name: Optional[str] = None
     target_role: Optional[str] = None
     education: Optional[str] = None
+    experience_level: Optional[Literal["fresher", "entry_level", "junior", "mid_level", "senior"]] = None
+    experience_years: Optional[float] = Field(default=None, ge=0, le=50)
     skills: Optional[List[str]] = None
     bio: Optional[str] = None
     github: Optional[str] = None
@@ -519,6 +524,8 @@ async def register(inp: RegisterIn):
         "privacy_mode": "A",
         "target_role": "frontend",
         "education": "",
+        "experience_level": "fresher",
+        "experience_years": None,
         "skills": [],
         "preferences": {},
         "bio": "",
@@ -668,6 +675,8 @@ async def get_profile(uid: str = Depends(get_current_user)):
 async def update_profile(inp: ProfileUpdateIn, uid: str = Depends(get_current_user)):
     db = get_db()
     update_data = {k: v for k, v in inp.model_dump().items() if v is not None}
+    if "experience_years" in inp.model_fields_set:
+        update_data["experience_years"] = inp.experience_years
     update_data["updated_at"] = now_iso()
     await db.users.update_one({"id": uid}, {"$set": update_data})
     u = await db_user(uid)
@@ -683,6 +692,8 @@ async def onboarding(inp: OnboardingIn, uid: str = Depends(get_current_user)):
         {"$set": {
             "education": inp.education,
             "target_role": inp.target_role,
+            "experience_level": inp.experience_level,
+            "experience_years": inp.experience_years,
             "skills": inp.skills,
             "preferences": inp.preferences,
             "privacy_mode": inp.privacy_mode,
@@ -711,6 +722,20 @@ async def delete_account(uid: str = Depends(get_current_user)):
 @api.get("/roles")
 async def list_roles():
     return ROLES
+
+@api.get("/career-opportunities")
+async def career_opportunities(uid: str = Depends(get_current_user)):
+    db = get_db()
+    user = await db_user(uid)
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+    analyses = await db.analyses.find(
+        {"user_id": uid}, {"_id": 0}
+    ).sort("created_at", -1).to_list(100)
+    interviews = await db.interviews.find(
+        {"user_id": uid}, {"_id": 0}
+    ).sort("created_at", -1).to_list(50)
+    return build_career_opportunities(user, analyses[0] if analyses else None, interviews, len(analyses))
 
 @api.get("/resources")
 async def list_resources(skill: Optional[str] = None, department: Optional[str] = None, difficulty: Optional[str] = None, cost: Optional[str] = None, resource_type: Optional[str] = None, search: Optional[str] = None):
@@ -1097,12 +1122,21 @@ async def import_data(inp: PrivacyImportIn, uid: str = Depends(get_current_user)
     if not isinstance(source_id, str) or not source_id:
         raise HTTPException(status_code=400, detail="This is not a valid CareerLens data export.")
 
-    string_profile_fields = ("name", "target_role", "education", "bio", "github", "linkedin", "profile_pic")
+    string_profile_fields = ("name", "target_role", "education", "bio", "github", "linkedin", "profile_pic", "experience_level")
     if any(
         field in source_user and (not isinstance(source_user[field], str) or len(source_user[field]) > 10000)
         for field in string_profile_fields
     ):
         raise HTTPException(status_code=400, detail="Invalid profile data in archive.")
+    if source_user.get("experience_level") and source_user["experience_level"] not in VALID_EXPERIENCE_LEVELS:
+        raise HTTPException(status_code=400, detail="Unknown experience level in archive.")
+    experience_years = source_user.get("experience_years")
+    if experience_years is not None and (
+        isinstance(experience_years, bool)
+        or not isinstance(experience_years, (int, float))
+        or not 0 <= experience_years <= 50
+    ):
+        raise HTTPException(status_code=400, detail="Invalid experience years in archive.")
     if source_user.get("target_role") and source_user["target_role"] not in ROLES_BY_ID:
         raise HTTPException(status_code=400, detail="Unknown target role in archive.")
     source_skills = source_user.get("skills", []) or []
@@ -1196,10 +1230,10 @@ async def import_data(inp: PrivacyImportIn, uid: str = Depends(get_current_user)
 
     profile_updates = {}
     if not target_user.get("onboarding_done") and source_user.get("onboarding_done"):
-        for field in ("target_role", "education", "onboarding_done"):
+        for field in ("target_role", "education", "experience_level", "experience_years", "onboarding_done"):
             if field in source_user:
                 profile_updates[field] = source_user[field]
-    for field in ("name", "education", "bio", "github", "linkedin", "profile_pic"):
+    for field in ("name", "education", "bio", "github", "linkedin", "profile_pic", "experience_level", "experience_years"):
         if not target_user.get(field) and source_user.get(field):
             profile_updates[field] = source_user[field]
     skills = list(dict.fromkeys((target_user.get("skills") or []) + (source_user.get("skills") or [])))

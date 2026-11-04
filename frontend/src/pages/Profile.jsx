@@ -27,6 +27,8 @@ export default function Profile() {
   const [email, setEmail] = useState("");
   const [targetRole, setTargetRole] = useState("frontend");
   const [education, setEducation] = useState("");
+  const [experienceLevel, setExperienceLevel] = useState("fresher");
+  const [experienceYears, setExperienceYears] = useState("");
   const [bio, setBio] = useState("");
   const [github, setGithub] = useState("");
   const [linkedin, setLinkedin] = useState("");
@@ -46,6 +48,8 @@ export default function Profile() {
         setEmail(u.email || "");
         setTargetRole(u.target_role || "frontend");
         setEducation(u.education || "");
+        setExperienceLevel(u.experience_level || "fresher");
+        setExperienceYears(u.experience_years ?? "");
         setBio(u.bio || "");
         setGithub(u.github || "");
         setLinkedin(u.linkedin || "");
@@ -93,6 +97,8 @@ export default function Profile() {
         name,
         target_role: targetRole,
         education,
+        experience_level: experienceLevel,
+        experience_years: experienceYears === "" ? null : Number(experienceYears),
         bio,
         github,
         linkedin,
@@ -211,6 +217,39 @@ export default function Profile() {
               className="dark:bg-slate-800 dark:border-slate-700 dark:text-slate-100"
             />
           </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label className="dark:text-slate-300">Current experience level</Label>
+              <select
+                value={experienceLevel}
+                onChange={(e) => setExperienceLevel(e.target.value)}
+                className="mt-1 flex h-10 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              >
+                <option value="fresher">Fresher</option>
+                <option value="entry_level">Entry-Level</option>
+                <option value="junior">Junior</option>
+                <option value="mid_level">Mid-Level</option>
+                <option value="senior">Senior</option>
+              </select>
+            </div>
+            <div>
+              <Label className="dark:text-slate-300">Years of professional experience</Label>
+              <Input
+                type="number"
+                min="0"
+                max="50"
+                step="0.5"
+                value={experienceYears}
+                onChange={(e) => setExperienceYears(e.target.value)}
+                placeholder="Optional"
+                className="dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              />
+            </div>
+          </div>
+          <p className="-mt-3 text-xs text-slate-500 dark:text-slate-400">
+            When years are provided, they take precedence over the selected level to keep role suggestions realistic.
+          </p>
 
           <div>
             <Label className="dark:text-slate-300">Bio / About Me (What you do and have built)</Label>

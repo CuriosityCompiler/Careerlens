@@ -15,6 +15,7 @@ from utils.interview import ELECTRONICS_CIRCUIT_RUBRICS, pick_questions, evaluat
 from utils.rate_limit import check_mode_b_rate_limit
 from utils.db import DEMO_USER_ID, STORE_FILE, LocalDatabase
 from data.personas import PERSONAS
+from utils.career_opportunities import build_career_opportunities
 from fastapi import HTTPException
 
 client = TestClient(app)
@@ -141,6 +142,140 @@ def test_interview_engine():
     assert next_difficulty("beginner", 85) == "intermediate"
     assert next_difficulty("intermediate", 80) == "advanced"
     assert next_difficulty("advanced", 30) == "intermediate"
+
+
+def test_career_recommendations_respect_fresher_stage_and_use_profile_evidence():
+    profile = {
+        "target_role": "aiml",
+        "experience_level": "fresher",
+        "experience_years": None,
+        "skills": ["python", "numpy"],
+    }
+    latest_analysis = {
+        "result": {
+            "skills_detected": ["machine learning"],
+            "gap_matrix": [
+                {"skill": "python", "present": True},
+                {"skill": "pytorch", "present": False},
+            ],
+        }
+    }
+    interviews = [{"status": "done", "summary": {"avg_score": 72}}]
+
+    opportunities = build_career_opportunities(profile, latest_analysis, interviews, 2)
+
+    assert opportunities["experience_level"] == "fresher"
+    assert opportunities["market"] == "India"
+    assert opportunities["learning_progress"]["resume_analyses"] == 2
+    assert opportunities["learning_progress"]["completed_interviews"] == 1
+    assert opportunities["learning_progress"]["course_completions_tracked"] is False
+    ai_role = next(role for role in opportunities["recommendations"] if role["role_id"] == "aiml")
+    assert ai_role["titles"] == ["AI Intern", "Machine Learning Intern"]
+    assert "python" in ai_role["matched_core_skills"]
+    assert "pytorch" in ai_role["skill_gaps"]
+    assert all(
+        "Senior" not in title and "Lead" not in title
+        for role in opportunities["recommendations"]
+        for title in role["titles"]
+    )
+
+
+@pytest.mark.parametrize("role_id", [
+        "frontend", "backend", "fullstack", "data_analyst", "python_developer",
+        "java_developer", "aiml", "embedded_systems_engineer", "electronics_engineer",
+        "electrical_engineer", "iot_developer", "vlsi_engineer",
+        "instrumentation_engineer", "robotics_engineer", "telecom_engineer",
+])
+def test_selected_profile_branch_is_first_even_without_matching_skills(role_id):
+    opportunities = build_career_opportunities(
+        {"target_role": role_id, "experience_level": "fresher", "skills": []},
+        None,
+        [],
+        0,
+    )
+
+    recommendations = opportunities["recommendations"]
+    assert recommendations[0]["role_id"] == role_id
+    assert recommendations[0]["is_interest_role"] is True
+    assert recommendations[0]["readiness"] == "Explore branch"
+    assert recommendations[0]["matched_core_count"] == 0
+    assert len(recommendations) == 1
+
+
+def test_career_recommendations_use_experience_years_to_prevent_overleveling():
+    opportunities = build_career_opportunities(
+        {
+            "target_role": "backend",
+            "experience_level": "fresher",
+            "experience_years": 4.5,
+            "skills": ["python", "sql", "rest", "git", "linux"],
+        },
+        None,
+        [],
+        0,
+    )
+
+    assert opportunities["experience_level"] == "mid_level"
+    backend_role = next(role for role in opportunities["recommendations"] if role["role_id"] == "backend")
+    assert backend_role["titles"][0] == "Backend Engineer"
+    assert backend_role["required_experience"] == "3-6 years of relevant experience"
+
+
+def test_electronics_target_does_not_recommend_software_roles_for_software_skills():
+    opportunities = build_career_opportunities(
+        {
+            "target_role": "electronics_engineer",
+            "experience_level": "fresher",
+            "skills": ["python", "sql", "git", "rest", "linux", "circuits"],
+        },
+        None,
+        [],
+        0,
+    )
+
+    recommendations = opportunities["recommendations"]
+    assert recommendations[0]["role_id"] == "electronics_engineer"
+    assert all(
+        role["role_id"] not in {"backend", "python_developer", "frontend", "fullstack"}
+        for role in recommendations
+    )
+    assert any(role["role_id"] == "electrical_engineer" for role in recommendations)
+    assert recommendations[0]["readiness"] == "Build next"
+
+
+def test_career_opportunities_endpoint_uses_only_the_authenticated_user_data(monkeypatch):
+    database = LocalDatabase()
+    monkeypatch.setattr(database, "save_to_disk", lambda: None)
+    monkeypatch.setattr(server, "get_db", lambda: database)
+    user_id = f"career-market-{uuid.uuid4()}"
+    import asyncio
+
+    asyncio.run(database.users.insert_one({
+        "id": user_id,
+        "target_role": "frontend",
+        "experience_level": "entry_level",
+        "experience_years": None,
+        "skills": ["javascript", "react"],
+    }))
+    asyncio.run(database.analyses.insert_one({
+        "id": "candidate-analysis",
+        "user_id": user_id,
+        "created_at": "2026-10-01T00:00:00Z",
+        "result": {"skills_detected": ["typescript"], "gap_matrix": []},
+    }))
+    original_overrides = app.dependency_overrides.copy()
+    app.dependency_overrides[server.get_current_user] = lambda: user_id
+
+    try:
+        response = client.get("/api/career-opportunities")
+        assert response.status_code == 200
+        assert response.json()["experience_level"] == "entry_level"
+        assert response.json()["skills"] == ["javascript", "react", "typescript"]
+        assert response.json()["recommendations"][0]["role_id"] == "frontend"
+        assert len(response.json()["recommendations"]) == 2
+    finally:
+        app.dependency_overrides.clear()
+        app.dependency_overrides.update(original_overrides)
 
 def test_electronics_engineer_questions_match_the_department():
     questions = pick_questions("electronics_engineer", "beginner", count=3)

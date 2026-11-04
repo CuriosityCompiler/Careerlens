@@ -70,3 +70,9 @@ flowchart TB
    - Protects free-tier Gemini API keys from quota burnout.
    - Sliding-window limiter allows a configured maximum (default: 5 requests / 5 minutes per user).
    - SHA-256 hash caching ensures identical resume text and role combinations never hit external LLM APIs repeatedly.
+
+5. **Experience-Aware Career Opportunities**:
+   - `GET /api/career-opportunities` combines the authenticated user's profile skills, latest resume analysis, interview practice, target role, and declared experience level.
+   - If years of experience are provided, they determine the experience band; otherwise the selected profile band is used. Fresher and entry-level job titles never include senior or lead positions.
+   - Recommendations put the profile's selected target role first, followed by up to four core-skill-matched alternatives from the same career cluster (software or electronics and hardware). This prevents unrelated branches from appearing just because a resume contains transferable keywords. If the selected role has no matched skills, it remains visible as an exploration path rather than an immediate application fit.
+   - Market estimates are directional and are not live vacancy counts. Course completions are not tracked, so the endpoint explicitly reports resume analysis and completed interview activity instead of claiming course progress.

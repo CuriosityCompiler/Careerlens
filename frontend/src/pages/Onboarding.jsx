@@ -16,6 +16,8 @@ export default function Onboarding() {
   const [targetRole, setTargetRole] = useState("frontend");
   const [education, setEducation] = useState("B.S. Computer Science, 2024");
   const [skillsInput, setSkillsInput] = useState("JavaScript, React, Git, HTML, CSS");
+  const [experienceLevel, setExperienceLevel] = useState("fresher");
+  const [experienceYears, setExperienceYears] = useState("");
   const [privacyMode, setPrivacyMode] = useState("A");
   const [busy, setBusy] = useState(false);
 
@@ -36,6 +38,8 @@ export default function Onboarding() {
         education,
         target_role: targetRole,
         skills,
+        experience_level: experienceLevel,
+        experience_years: experienceYears === "" ? null : Number(experienceYears),
         preferences: {},
         privacy_mode: privacyMode,
       });
@@ -109,6 +113,38 @@ export default function Onboarding() {
               required
             />
           </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <Label>Current experience level</Label>
+              <select
+                value={experienceLevel}
+                onChange={(e) => setExperienceLevel(e.target.value)}
+                className="mt-1.5 flex h-10 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              >
+                <option value="fresher">Fresher</option>
+                <option value="entry_level">Entry-Level</option>
+                <option value="junior">Junior</option>
+                <option value="mid_level">Mid-Level</option>
+                <option value="senior">Senior</option>
+              </select>
+            </div>
+            <div>
+              <Label>Years of professional experience</Label>
+              <Input
+                type="number"
+                min="0"
+                max="50"
+                step="0.5"
+                value={experienceYears}
+                onChange={(e) => setExperienceYears(e.target.value)}
+                placeholder="Optional"
+              />
+            </div>
+          </div>
+          <p className="-mt-3 text-xs text-slate-500">
+            Recommendations use this level to avoid suggesting roles above your current stage.
+          </p>
 
           <div className="pt-2 border-t border-slate-100">
             <Label>Default Privacy Mode</Label>

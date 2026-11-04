@@ -12,6 +12,7 @@ import {
   BookOpen,
   BarChart3,
   User,
+  BriefcaseBusiness,
 } from "lucide-react";
 import { Toaster } from "@/components/ui/sonner";
 import ProcessingBadge from "@/components/app/ProcessingBadge";
@@ -23,6 +24,7 @@ const navItems = [
   { to: "/interview", label: "Mock Interview", icon: MessageSquare, testid: "nav-interview" },
   { to: "/resources", label: "Resources", icon: BookOpen, testid: "nav-resources" },
   { to: "/analytics", label: "Analytics", icon: BarChart3, testid: "nav-analytics" },
+  { to: "/career-opportunities", label: "Career Opportunities", icon: BriefcaseBusiness, testid: "nav-career-opportunities" },
   { to: "/profile", label: "Profile", icon: User, testid: "nav-profile" },
   { to: "/privacy", label: "Privacy Center", icon: Shield, testid: "nav-privacy" },
 ];

@@ -11,6 +11,7 @@ import Resources from "@/pages/Resources";
 import Analytics from "@/pages/Analytics";
 import PrivacyCenter from "@/pages/PrivacyCenter";
 import Profile from "@/pages/Profile";
+import CareerOpportunities from "@/pages/CareerOpportunities";
 import AppLayout from "@/components/app/AppLayout";
 
 function Protected({ children }) {
@@ -77,6 +78,7 @@ export default function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/analytics" element={<Analytics />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/career-opportunities" element={<CareerOpportunities />} />
           <Route path="/privacy" element={<PrivacyCenter />} />
         </Route>
 
