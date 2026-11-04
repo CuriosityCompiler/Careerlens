@@ -10,7 +10,7 @@ CareerLens is architected to exceed OWASP ASVS Level 2 guidelines for career dat
 
 2. **Credential Safety**:
    - Passwords are encrypted using **Argon2id** (`argon2-cffi`).
-   - Access tokens have short lifespans (default: 60 minutes) backed by 7-day refresh tokens.
+   - Access tokens expire after 24 hours by default and are backed by 30-day refresh tokens. Both lifetimes can be configured with `JWT_ACCESS_MIN` and `JWT_REFRESH_DAYS`.
    - Plaintext passwords and JWTs are never written to server application logs.
 
 3. **Data Retention & Destruction**:

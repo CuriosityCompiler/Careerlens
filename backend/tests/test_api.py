@@ -9,11 +9,11 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 import server
 from server import app
-from utils.auth import hash_password, verify_password, create_token, decode_token
+from utils.auth import ACCESS_MIN, hash_password, verify_password, create_token, decode_token
 from utils.analyzer import score as analyze_score
 from utils.interview import ELECTRONICS_CIRCUIT_RUBRICS, pick_questions, evaluate_answer, evaluate_circuit_challenge, next_difficulty
 from utils.rate_limit import check_mode_b_rate_limit
-from utils.db import DEMO_USER_ID, STORE_FILE
+from utils.db import DEMO_USER_ID, STORE_FILE, LocalDatabase
 from data.personas import PERSONAS
 from fastapi import HTTPException
 
@@ -37,6 +37,7 @@ def test_jwt_token_creation_and_decoding():
 
     assert decoded_acc["sub"] == uid
     assert decoded_acc["typ"] == "access"
+    assert decoded_acc["exp"] - decoded_acc["iat"] == ACCESS_MIN * 60
     assert decoded_ref["sub"] == uid
     assert decoded_ref["typ"] == "refresh"
 
@@ -63,6 +64,52 @@ def test_persona_resumes_analysis():
     assert cooper_result["empty_or_joke"] is False
     assert cooper_result["scores"]["overall"] >= 60
     assert "sql" in cooper_result["skills_detected"]
+
+
+def test_exit_demo_persona_removes_only_persona_data(monkeypatch):
+    database = LocalDatabase()
+    monkeypatch.setattr(database, "save_to_disk", lambda: None)
+    monkeypatch.setattr(server, "get_db", lambda: database)
+    monkeypatch.setattr(server, "append_user_csv", lambda *_: None)
+
+    email = f"persona_exit_{uuid.uuid4().hex[:8]}@example.com"
+    registered = client.post(
+        "/api/auth/register",
+        json={"email": email, "password": "SecurePass123!", "name": "Personal Account"},
+    )
+    assert registered.status_code == 200
+    headers = {"Authorization": f"Bearer {registered.json()['access_token']}"}
+
+    seeded = client.post("/api/demo/seed-persona?persona_id=vic_frontend", headers=headers)
+    assert seeded.status_code == 200
+    status = client.get("/api/demo/persona-status", headers=headers)
+    assert status.status_code == 200
+    assert status.json() == {"active": True, "persona_id": "vic_frontend"}
+    own_resume = client.post(
+        "/api/resumes/analyze",
+        headers=headers,
+        json={
+            "text": PERSONAS["vic_frontend"]["resume_text"],
+            "filename": "my_resume.txt",
+            "target_role": "frontend",
+            "mode": "A",
+        },
+    )
+    assert own_resume.status_code == 200
+
+    exited = client.post("/api/demo/exit-persona", headers=headers)
+    assert exited.status_code == 200
+    status = client.get("/api/demo/persona-status", headers=headers)
+    assert status.status_code == 200
+    assert status.json() == {"active": False, "persona_id": None}
+    analyses = client.get("/api/analyses", headers=headers)
+    assert analyses.status_code == 200
+    assert len(analyses.json()) == 1
+    assert analyses.json()[0]["resume_id"] == own_resume.json()["resume_id"]
+    profile = client.get("/api/auth/me", headers=headers)
+    assert profile.status_code == 200
+    assert profile.json()["email"] == email
+
 
 def test_empty_or_joke_resume_handling():
     short_text = "I like coding. Hire me."

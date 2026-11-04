@@ -38,8 +38,8 @@ security = HTTPBearer(auto_error=False)
 
 SECRET = os.environ.get("JWT_SECRET", "careerlens-secret-super-secure-key-change-in-production-2025")
 ALGO = os.environ.get("JWT_ALGO", "HS256")
-ACCESS_MIN = int(os.environ.get("JWT_ACCESS_MIN", "60"))
-REFRESH_DAYS = int(os.environ.get("JWT_REFRESH_DAYS", "7"))
+ACCESS_MIN = int(os.environ.get("JWT_ACCESS_MIN", "1440"))
+REFRESH_DAYS = int(os.environ.get("JWT_REFRESH_DAYS", "30"))
 
 def create_token(sub: str, typ: str = "access") -> str:
     now = datetime.now(timezone.utc)

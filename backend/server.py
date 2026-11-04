@@ -434,14 +434,17 @@ def append_user_csv(name: str, email: str):
 async def db_user(uid: str):
     return await get_db().users.find_one({"id": uid}, {"_id": 0})
 
-async def _log_event(uid: str, kind: str, payload: dict):
-    await get_db().events.insert_one({
+async def _log_event(uid: str, kind: str, payload: dict, demo_persona_id: Optional[str] = None):
+    event = {
         "id": str(uuid.uuid4()),
         "user_id": uid,
         "kind": kind,
         "payload": payload,
         "created_at": now_iso()
-    })
+    }
+    if demo_persona_id:
+        event["demo_persona_id"] = demo_persona_id
+    await get_db().events.insert_one(event)
 
 def _build_recommendations(analysis: dict, prefs: dict) -> list:
     """Transparent recommendation scorer: roleRelevance * skillGapSeverity * userPreference * resourceQuality * recency."""
@@ -755,8 +758,7 @@ async def extract_file_endpoint(file: UploadFile = File(...), uid: str = Depends
     }
 
 # ---------- Resume Analysis (Mode A default) ----------
-@api.post("/resumes/analyze")
-async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
+async def _analyze_resume(inp: ResumeIn, uid: str, demo_persona_id: Optional[str] = None):
     db = get_db()
     u = await db_user(uid)
     role_id = inp.target_role or (u or {}).get("target_role") or "frontend"
@@ -774,6 +776,8 @@ async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
         "text": inp.text if inp.mode == "B" else None,
         "text_length": len(inp.text),
     }
+    if demo_persona_id:
+        doc["demo_persona_id"] = demo_persona_id
     await db.resumes.insert_one(doc)
 
     analysis_doc = {
@@ -785,6 +789,8 @@ async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
         "created_at": now_iso(),
         "overall_score": result.get("scores", {}).get("overall", 0),
     }
+    if demo_persona_id:
+        analysis_doc["demo_persona_id"] = demo_persona_id
     await db.analyses.insert_one(analysis_doc)
 
     if not result.get("empty_or_joke"):
@@ -793,12 +799,19 @@ async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
             r["user_id"] = uid
             r["resume_id"] = resume_id
             r["created_at"] = now_iso()
+            if demo_persona_id:
+                r["demo_persona_id"] = demo_persona_id
         if recs:
             await db.recommendations.insert_many(recs)
 
-    await _log_event(uid, "resume.analyzed", {"resume_id": resume_id, "score": analysis_doc["overall_score"]})
+    await _log_event(
+        uid,
+        "resume.analyzed",
+        {"resume_id": resume_id, "score": analysis_doc["overall_score"]},
+        demo_persona_id=demo_persona_id,
+    )
 
-    await db.notifications.insert_one({
+    notification = {
         "id": str(uuid.uuid4()),
         "user_id": uid,
         "type": "ACTION" if result.get("empty_or_joke") else "PROGRESS",
@@ -806,9 +819,18 @@ async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
         "body": result.get("message") if result.get("empty_or_joke") else f"Overall score: {analysis_doc['overall_score']}/100 for {ROLES_BY_ID.get(role_id, {}).get('name', role_id)}.",
         "read": False,
         "created_at": now_iso(),
-    })
+    }
+    if demo_persona_id:
+        notification["demo_persona_id"] = demo_persona_id
+    await db.notifications.insert_one(notification)
 
     return {"resume_id": resume_id, "analysis": result, "analysis_id": analysis_doc["id"]}
+
+
+@api.post("/resumes/analyze")
+async def analyze_resume(inp: ResumeIn, uid: str = Depends(get_current_user)):
+    return await _analyze_resume(inp, uid)
+
 
 @api.get("/resumes")
 async def list_resumes(uid: str = Depends(get_current_user)):
@@ -1205,7 +1227,64 @@ async def seed_persona(persona_id: str, uid: str = Depends(get_current_user)):
         target_role=p["role_target"],
         mode="A"
     )
-    return await analyze_resume(inp, uid)
+    return await _analyze_resume(inp, uid, demo_persona_id=persona_id)
+
+
+async def _demo_persona_resumes(db, uid: str):
+    seeded_resumes = []
+    for persona_id in PERSONAS:
+        seeded_resumes.extend(
+            await db.resumes.find(
+                {
+                    "user_id": uid,
+                    "$or": [
+                        {"demo_persona_id": persona_id},
+                        {"filename": f"{persona_id}_resume.txt"},
+                    ],
+                },
+                {"_id": 0, "id": 1, "created_at": 1, "filename": 1, "demo_persona_id": 1},
+            ).to_list(100)
+        )
+    return seeded_resumes
+
+
+@api.get("/demo/persona-status")
+async def demo_persona_status(uid: str = Depends(get_current_user)):
+    seeded_resumes = await _demo_persona_resumes(get_db(), uid)
+    if not seeded_resumes:
+        return {"active": False, "persona_id": None}
+
+    latest = max(seeded_resumes, key=lambda resume: resume.get("created_at", ""))
+    persona_id = latest.get("demo_persona_id")
+    if not persona_id:
+        filename = latest.get("filename", "")
+        persona_id = next(
+            (candidate for candidate in PERSONAS if filename == f"{candidate}_resume.txt"),
+            None,
+        )
+    return {"active": True, "persona_id": persona_id}
+
+
+@api.post("/demo/exit-persona")
+async def exit_demo_persona(uid: str = Depends(get_current_user)):
+    db = get_db()
+    persona_ids = list(PERSONAS)
+    seeded_resumes = await _demo_persona_resumes(db, uid)
+
+    resume_ids = {resume["id"] for resume in seeded_resumes if resume.get("id")}
+    removed = {"resumes": 0, "analyses": 0, "recommendations": 0, "events": 0, "notifications": 0}
+    for resume_id in resume_ids:
+        removed["analyses"] += await db.analyses.delete_many({"user_id": uid, "resume_id": resume_id})
+        removed["recommendations"] += await db.recommendations.delete_many({"user_id": uid, "resume_id": resume_id})
+        removed["resumes"] += await db.resumes.delete_many({"user_id": uid, "id": resume_id})
+
+    for persona_id in persona_ids:
+        removed["analyses"] += await db.analyses.delete_many({"user_id": uid, "demo_persona_id": persona_id})
+        removed["recommendations"] += await db.recommendations.delete_many({"user_id": uid, "demo_persona_id": persona_id})
+        removed["events"] += await db.events.delete_many({"user_id": uid, "demo_persona_id": persona_id})
+        removed["notifications"] += await db.notifications.delete_many({"user_id": uid, "demo_persona_id": persona_id})
+
+    return {"ok": True, "removed": removed}
 
 # ---------- Mode B: Server AI Critique (Rate-Limited & Cached) ----------
 @api.post("/ai/critique")

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api, { API } from "@/lib/api";
+import { useAuth } from "@/lib/auth";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +21,10 @@ import { Download, TrendingUp, CheckCircle, BarChart3, Loader2 } from "lucide-re
 import { toast } from "sonner";
 
 export default function Analytics() {
+  const { user } = useAuth();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
 
   useEffect(() => {
     api.get("/analytics/summary")
@@ -56,6 +59,29 @@ export default function Analytics() {
     }
   };
 
+  const downloadPdf = async () => {
+    setDownloadingPdf(true);
+    try {
+      const [analysesResponse, interviewsResponse] = await Promise.all([
+        api.get("/analyses"),
+        api.get("/interviews"),
+      ]);
+      const { downloadProgressReport } = await import("@/lib/reportPdf");
+      downloadProgressReport({
+        user,
+        analyses: Array.isArray(analysesResponse.data) ? analysesResponse.data : [],
+        interviews: Array.isArray(interviewsResponse.data) ? interviewsResponse.data : [],
+      });
+      toast.success("Your detailed progress report was downloaded as a PDF.");
+    } catch (error) {
+      toast.error(
+        `PDF report download failed: ${error.response?.data?.detail || error.message || "Please try again."}`
+      );
+    } finally {
+      setDownloadingPdf(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="py-24 text-center text-slate-500 text-sm flex items-center justify-center gap-2" data-testid="analytics-loading">
@@ -75,9 +101,24 @@ export default function Analytics() {
             Track historical trends across resume updates, mock interviews, and skill-gap closures.
           </p>
         </div>
-        <Button data-testid="btn-download-csv" onClick={downloadCsv} variant="outline" className="border-slate-300">
-          <Download className="w-4 h-4 mr-1.5" /> Download Progress CSV
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            data-testid="btn-download-pdf"
+            onClick={downloadPdf}
+            disabled={downloadingPdf}
+            className="bg-indigo-600 text-white hover:bg-indigo-700"
+          >
+            {downloadingPdf ? (
+              <Loader2 className="w-4 h-4 mr-1.5 animate-spin" />
+            ) : (
+              <Download className="w-4 h-4 mr-1.5" />
+            )}
+            {downloadingPdf ? "Preparing PDF..." : "Download PDF Report"}
+          </Button>
+          <Button data-testid="btn-download-csv" onClick={downloadCsv} variant="outline" className="border-slate-300">
+            <Download className="w-4 h-4 mr-1.5" /> Download Progress CSV
+          </Button>
+        </div>
       </div>
 
       {/* KPI Cards */}
